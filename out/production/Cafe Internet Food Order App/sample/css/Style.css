@@ -1,0 +1,18 @@
+.item-card{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+}
+.item-card1{
+    -fx-background-radius: 20 20 0 0;
+}
+
+.scroll-pane{
+    -fx-background-color: #fcfcfc;
+}
+
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: #fcfcfc;
+    -fx-unit-increment: 500 ;
+    -fx-block-increment: 500 ;
+}
