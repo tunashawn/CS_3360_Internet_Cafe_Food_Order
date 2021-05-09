@@ -16,7 +16,7 @@ public class CafeInternetFoodOrderApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/MainFrame.fxml"));
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override

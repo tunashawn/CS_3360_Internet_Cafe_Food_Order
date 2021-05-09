@@ -11,6 +11,7 @@ import sample.models.Items;
 import javafx.scene.image.ImageView ;
 import sample.main.CafeInternetFoodOrderApp;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class ItemControl {
@@ -28,45 +29,16 @@ public class ItemControl {
     private Items item;
     private MyListener myListener;
 
-    public Label getNameLabel() {
-        return nameLabel;
-    }
-
-    public void setNameLabel(Label nameLabel) {
-        this.nameLabel = nameLabel;
-    }
-
-    public Label getPriceLabel() {
-        return priceLabel;
-    }
-
-    public void setPriceLabel(Label priceLabel) {
-        this.priceLabel = priceLabel;
-    }
-
-    public ImageView getImg() {
-        return img;
-    }
-
-    public void setImg(ImageView img) {
-        this.img = img;
-    }
-
-    public Items getItem() {
-        return item;
-    }
-
-    public void setItem(Items item) {
-        this.item = item;
-    }
-
-    public MyListener getMyListener() {
-        return myListener;
-    }
 
     public void setMyListener(MyListener myListener) {
         this.myListener = myListener;
     }
+
+    @FXML
+    private void click(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        myListener.onClickListener(item);
+    }
+
 
     public void setData(Items item, MyListener myListener) {
         this.item = item;
