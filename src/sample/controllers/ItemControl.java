@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView ;
 import sample.main.CafeInternetFoodOrderApp;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class ItemControl {
@@ -44,8 +45,9 @@ public class ItemControl {
         this.item = item;
         this.myListener = myListener;
         nameLabel.setText(item.getName());
-        priceLabel.setText(CafeInternetFoodOrderApp.CURRENCY + item.getPrice());
-        Image image = new Image(getClass().getResourceAsStream(item.getImgSrc()));
-        img.setImage(image);
+        DecimalFormat df = new DecimalFormat("#,###");
+        priceLabel.setText( df.format(item.getPrice()) + " " +  CafeInternetFoodOrderApp.CURRENCY);
+
+        img.setImage(item.getImgSrc());
     }
 }

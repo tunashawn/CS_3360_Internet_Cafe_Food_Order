@@ -26,5 +26,6 @@
     <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
     <orderEntry type="library" name="fontawesomefx-8.1" level="project" />
     <orderEntry type="library" name="ojdbc6-11.2.0.3" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.24" level="project" />
   </component>
 </module>

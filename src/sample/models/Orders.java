@@ -1,17 +1,18 @@
 package sample.models;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 public class Orders {
     private int orderId;
-    private Date time;
+    private LocalDateTime time;
     private String location;
     private List<Items> items;
     private int customerId;
     private double totalPrice;
 
-    public Orders(int orderId, Date time, String location, List<Items> items, int customerId) {
+    public Orders(int orderId, LocalDateTime time, String location, List<Items> items, int customerId) {
         this.orderId = orderId;
         this.time = time;
         this.location = location;
@@ -27,7 +28,7 @@ public class Orders {
         return orderId;
     }
 
-    public Date getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 

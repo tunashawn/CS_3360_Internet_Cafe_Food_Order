@@ -1,9 +1,13 @@
 package sample.models;
 
+import javafx.scene.image.Image;
+
+import java.io.InputStream;
+
 public class Items {
     private String name;
     private double price;
-    private String imgSrc;
+    private Image imgSrc;
 
     public String getName() {
         return name;
@@ -21,11 +25,11 @@ public class Items {
         this.price = price;
     }
 
-    public String getImgSrc() {
+    public Image getImgSrc() {
         return imgSrc;
     }
 
-    public void setImgSrc(String imgSrc) {
+    public void setImgSrc(Image imgSrc) {
         this.imgSrc = imgSrc;
     }
 

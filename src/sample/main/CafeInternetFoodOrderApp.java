@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class CafeInternetFoodOrderApp extends Application {
-    public static final String CURRENCY = "$";
+    public static final String CURRENCY = "đ";
     private double xOffset = 0;
     private double yOffset = 0;
 

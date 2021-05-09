@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -36,15 +37,22 @@
             </HBox>
             <VBox alignment="CENTER" style="-fx-background-color: #FCD757;" styleClass="item-card1">
                <children>
-                  <Label fx:id="nameLabel" text="Monster Energy Zero Sugar">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="BOTTOM_CENTER">
+                     <children>
+                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" text="Monster Energy Zero Sugar">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <Label fx:id="priceLabel" text="\$3.9">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Calibri" size="15.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>

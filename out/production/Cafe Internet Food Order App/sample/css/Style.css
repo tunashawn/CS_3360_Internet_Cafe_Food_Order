@@ -16,3 +16,30 @@
     -fx-unit-increment: 500 ;
     -fx-block-increment: 500 ;
 }
+
+/*.label {*/
+/*    -fx-text-fill: black;*/
+/*    -fx-font-size: 18;*/
+/*    -fx-font-family: Monaco;*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+.button-add{
+    -fx-background-color: #27ae60;
+    -fx-background-radius: 0 0 20 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+.button-cancel{
+    -fx-background-color: #e74c3c;
+    -fx-background-radius: 0 0 0 20;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+.label-cart{
+    -fx-background-color: #ffd321;
+    -fx-background-radius: 50 50 50 50;
+}
