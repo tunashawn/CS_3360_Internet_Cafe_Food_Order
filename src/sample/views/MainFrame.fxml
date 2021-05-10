@@ -98,13 +98,6 @@
                                  <font>
                                     <Font name="Century Gothic Bold" size="22.0" />
                                  </font>
-                                 <effect>
-                                    <DropShadow height="1.0" offsetX="1.0" offsetY="1.0" radius="0.0" width="1.0">
-                                       <color>
-                                          <Color red="0.6447368264198303" green="0.6447368264198303" blue="0.6447368264198303" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
                               </Label>
                            </children>
                         </HBox>
@@ -355,6 +348,83 @@
                   </GridPane>
                </children>
             </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="myOrderPane" prefHeight="700.0" prefWidth="1200.0">
+         <children>
+            <Rectangle height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color opacity="0.5986956357955933" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9961685823754789">
+                           <color>
+                              <Color opacity="0.37391307950019836" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color opacity="0.37391307950019836" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Pane layoutX="250.0" layoutY="30.0" prefHeight="641.0" prefWidth="700.0" styleClass="item-card" stylesheets="@../css/Style.css">
+               <children>
+                  <Pane prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #e67e22; -fx-background-radius: 20 20 0 0;">
+                     <children>
+                        <Label layoutX="35.0" layoutY="21.0" text="My Order" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Semibold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="orderTotalPrice" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="513.0" layoutY="59.0" prefHeight="41.0" prefWidth="168.0" text="100,000" textFill="WHITE">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="363.0" layoutY="65.0" onAction="#calculateTotalButton" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #f5f5f5;" text="Calculate total">
+                           <font>
+                              <Font name="Open Sans Semibold" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="671.0" layoutY="11.0" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" onAction="#closeMyOrderPaneButton" prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <FontAwesomeIcon iconName="TIMES" size="20" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <ScrollPane fx:id="orderScroll" hbarPolicy="NEVER" layoutX="10.0" layoutY="114.0" maxHeight="470.0" prefWidth="680.0" style="-fx-background-color: white;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <content>
+                        <GridPane fx:id="orderGrid" alignment="TOP_CENTER" maxWidth="680.0" minWidth="600.0" prefWidth="680.0" style="-fx-background-color: white;">
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="591.0" onAction="#deleteSelectedItemButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" text="Delete selected item">
+                     <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="591.0" prefHeight="35.0" prefWidth="131.0" style="-fx-background-color: #f5f5f5;" text="Make order">
+                     <font>
+                        <Font name="Open Sans Semibold" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

@@ -1,19 +1,16 @@
 package sample.controllers;
 
-import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import org.w3c.dom.events.MouseEvent;
 import sample.main.MyListener;
 import sample.models.Items;
 
 import javafx.scene.image.ImageView ;
-import sample.main.CafeInternetFoodOrderApp;
+import sample.main.InternetCafeFoodOrderApp;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 public class ItemControl {
     @FXML private Label nameLabel;
@@ -46,7 +43,7 @@ public class ItemControl {
         this.myListener = myListener;
         nameLabel.setText(item.getName());
         DecimalFormat df = new DecimalFormat("#,###");
-        priceLabel.setText( df.format(item.getPrice()) + " " +  CafeInternetFoodOrderApp.CURRENCY);
+        priceLabel.setText( df.format(item.getPrice()) + " " +  InternetCafeFoodOrderApp.CURRENCY);
 
         img.setImage(item.getImgSrc());
     }

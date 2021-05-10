@@ -17,12 +17,10 @@
     -fx-block-increment: 500 ;
 }
 
-/*.label {*/
-/*    -fx-text-fill: black;*/
-/*    -fx-font-size: 18;*/
-/*    -fx-font-family: Monaco;*/
-/*    -fx-font-weight: bold;*/
-/*}*/
+.label-on-cart-item{
+    -fx-font-family: 'Open Sans';
+    -fx-font-size: 20;
+}
 
 .button-add{
     -fx-background-color: #27ae60;
@@ -37,6 +35,10 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 15;
+}
+.button-up-down{
+    -fx-background-color: #aaaaaa;
+
 }
 
 .label-cart{
