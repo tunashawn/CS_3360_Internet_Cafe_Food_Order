@@ -24,7 +24,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainFrameControl">
+<Pane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: white;">
         <columnConstraints>
@@ -389,11 +389,6 @@
                               <Font size="31.0" />
                            </font>
                         </Label>
-                        <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="363.0" layoutY="65.0" onAction="#calculateTotalButton" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #f5f5f5;" text="Calculate total">
-                           <font>
-                              <Font name="Open Sans Semibold" size="15.0" />
-                           </font>
-                        </JFXButton>
                         <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="671.0" layoutY="11.0" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" onAction="#closeMyOrderPaneButton" prefHeight="20.0" prefWidth="20.0">
                            <graphic>
                               <FontAwesomeIcon iconName="TIMES" size="20" />
@@ -413,11 +408,6 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="591.0" onAction="#deleteSelectedItemButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" text="Delete selected item">
-                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
-                     </font>
-                  </JFXButton>
                   <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="591.0" prefHeight="35.0" prefWidth="131.0" style="-fx-background-color: #f5f5f5;" text="Make order">
                      <font>
                         <Font name="Open Sans Semibold" size="15.0" />

@@ -1,8 +1,10 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -26,6 +28,14 @@ public class OnCartItemControl {
     private Label quantityLabel;
     @FXML
     private Label totalPriceLabel;
+    @FXML
+    private Label orderTotalPrice;
+    @FXML
+    private JFXButton increaseQuantityButton;
+    @FXML
+    private JFXButton decreaseQuantityButton;
+    @FXML
+    private JFXButton deleteButton;
 
     private int itemIndex;
     private double price;
@@ -33,6 +43,87 @@ public class OnCartItemControl {
     private int quantity;
     private MyListener myListener;
     private OnCartItems item;
+
+    private Stage thisStage;
+
+    private final MainFrameControl mainFrameControl;
+
+
+    public OnCartItemControl(MainFrameControl mainFrameControl) {
+        // We received the first controller, now let's make it usable throughout this controller.
+        this.mainFrameControl = mainFrameControl;
+
+        // Create the new stage
+        thisStage = new Stage();
+
+        // Load the FXML file
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/OnCartItem.fxml"));
+
+            // Set this class as the controller
+            loader.setController(this);
+
+            // Load the scene
+            thisStage.setScene(new Scene(loader.load()));
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showStage() {
+        thisStage.showAndWait();
+    }
+
+    @FXML
+    private void initialize() {
+        // Set the action for the button that interact with MainFrame
+        increaseQuantityButton.setOnAction(event -> setPlusButton());
+
+        decreaseQuantityButton.setOnAction(event -> setMinusButton());
+
+        deleteButton.setOnAction(event -> setDeleteButton());
+
+
+    }
+
+
+    /**
+     * Increase quantity of selected item by 1
+     */
+    private void setPlusButton(){
+        quantity ++;
+        System.out.println(quantity);
+        quantityLabel.setText(String.valueOf(quantity));
+        calculateTotal();
+        Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
+        mainFrameControl.upDateTotalPriceFromOnCartItem();
+    }
+
+    /**
+     * Decrease quantity of the selected item by 1
+     */
+    private void setMinusButton(){
+        if (quantity - 1 > 0){
+            quantity --;
+            quantityLabel.setText(String.valueOf(quantity));
+            calculateTotal();
+            Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
+            mainFrameControl.upDateTotalPriceFromOnCartItem();
+        }
+    }
+
+    /**
+     * Delete this item from Order List
+     */
+    private void setDeleteButton(){
+        mainFrameControl.deleteSelectedItemOnCart(this.item);
+    }
+
+
 
     @FXML
     private void click(MouseEvent mouseEvent){
@@ -45,41 +136,6 @@ public class OnCartItemControl {
 
     public void setMyListener(MyListener myListener) {
         this.myListener = myListener;
-    }
-
-    /**
-     * PLUS BUTTON
-     * Increase quantity of selected item by 1
-     * @param event
-     */
-    @FXML
-    private void setPlusButton(ActionEvent event){
-        quantity ++;
-        System.out.println(quantity);
-        quantityLabel.setText(String.valueOf(quantity));
-        calculateTotal();
-        Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
-    }
-
-    /**
-     * MINUS BUTTON
-     * Decrease quantity of the selected item by 1
-     * @param event
-     */
-    @FXML
-    private <MyAppController> void setMinusButton(ActionEvent event){
-        if (quantity - 1 > 0){
-            quantity --;
-            quantityLabel.setText(String.valueOf(quantity));
-            calculateTotal();
-            Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
-
-        }
-    }
-
-    @FXML
-    private void setDeleteButton(ActionEvent event){
-
     }
 
     private void calculateTotal(){

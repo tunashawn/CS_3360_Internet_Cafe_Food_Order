@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -104,11 +105,54 @@ public class MainFrameControl implements Initializable {
 
 
 
+    private final Stage thisStage;
+    public MainFrameControl(){
+
+        // Create the new stage
+        thisStage = new Stage();
+
+        // Load the FXML file
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/MainFrame.fxml"));
+
+            // Set this class as the controller
+            loader.setController(this);
+
+            // Load the scene
+            thisStage.setScene(new Scene(loader.load()));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Show the stage that was loaded in the constructor
+     */
+    public void showStage() {
+        thisStage.show();
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         selectQuantityPane.setVisible(false);
         myOrderPane.setVisible(false);
     }
+
+    public void upDateTotalPriceFromOnCartItem() {
+        refreshOrderTotalPrice();
+    }
+
+    public void deleteSelectedItemOnCart(OnCartItems item){
+        Data.removeItem(item);
+        refreshOrderTotalPrice();
+        populateOnCartItemList();
+    }
+
+
+
+
 
     /**
      * COFFEE BUTTON
@@ -248,14 +292,8 @@ public class MainFrameControl implements Initializable {
         refreshOrderTotalPrice();
     }
 
-    @FXML
-    private void deleteSelectedItemButton(ActionEvent event){
-        if (selectedOnCartItem.getName().length() > 0){
-            Data.removeItem(selectedOnCartItem);
-            refreshOrderTotalPrice();
-            populateOnCartItemList();
-        }
-    }
+
+
 
 
     /**
@@ -352,10 +390,15 @@ public class MainFrameControl implements Initializable {
             for (int i = 0; i < onCartItemsList.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/sample/views/OnCartItem.fxml"));
-                AnchorPane pane = fxmlLoader.load();
 
-                OnCartItemControl onCartItemController = fxmlLoader.getController();
+                OnCartItemControl onCartItemController = new OnCartItemControl(this);
+                fxmlLoader.setController(onCartItemController);
+                AnchorPane pane = fxmlLoader.load();
                 onCartItemController.setOnCartItemData(onCartItemsList.get(i), myListener);
+
+
+
+
 
                 if (column == 1) {
                     column = 0;
@@ -382,4 +425,6 @@ public class MainFrameControl implements Initializable {
         DecimalFormat df = new DecimalFormat("#,###");
         orderTotalPrice.setText(df.format(totalPrice) + " " + InternetCafeFoodOrderApp.CURRENCY);
     }
+
+
 }

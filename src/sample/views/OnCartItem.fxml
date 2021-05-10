@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="125.0" maxWidth="-Infinity" minHeight="125.0" minWidth="-Infinity" prefHeight="125.0" prefWidth="650.0" style="-fx-background-color: #f3f3f3;" onMousePressed="#click" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.OnCartItemControl">
+<AnchorPane maxHeight="125.0" maxWidth="-Infinity" minHeight="125.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="125.0" prefWidth="650.0" style="-fx-background-color: #f3f3f3;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="imgLabel" fitHeight="115.0" fitWidth="115.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,12 +22,12 @@
             <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="265.0" styleClass="label-on-cart-item" text="Oolong Tea plus" wrapText="true" />
          </children>
       </HBox>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="33.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#setPlusButton" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+      <JFXButton fx:id="increaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="33.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
          <graphic>
             <FontAwesomeIcon iconName="PLUS" />
          </graphic>
       </JFXButton>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="68.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" onAction="#setMinusButton" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+      <JFXButton fx:id="decreaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="68.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
          <graphic>
             <FontAwesomeIcon iconName="MINUS" />
          </graphic>
@@ -57,5 +57,6 @@
             <Font name="Open Sans" size="15.0" />
          </font>
       </Label>
+      <JFXButton fx:id="deleteButton" layoutX="606.0" layoutY="7.0" text="Delete" textFill="#575757" />
    </children>
 </AnchorPane>
