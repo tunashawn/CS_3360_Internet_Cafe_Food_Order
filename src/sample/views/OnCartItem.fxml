@@ -11,39 +11,39 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: #f3f3f3;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: white; -fx-padding: 4; -fx-border-color: #e67e22; -fx-border-radius: 20 20 20 20;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane layoutX="5.0" layoutY="5.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
+      <StackPane layoutX="14.0" layoutY="6.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
          <children>
             <ImageView fx:id="imgLabel" fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/ebb7b4fada0a3077ebc5a20f0cc0052b.jpg" />
+                  <Image url="@../img/haha.jpg" />
                </image>
             </ImageView>
          </children>
       </StackPane>
-      <HBox alignment="BOTTOM_LEFT" layoutX="141.0" layoutY="11.0" prefHeight="51.0" prefWidth="264.0">
+      <HBox alignment="BOTTOM_LEFT" layoutX="150.0" prefHeight="63.0" prefWidth="264.0">
          <children>
-            <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="265.0" styleClass="label-on-cart-item" text="Oolong Tea plus" wrapText="true" />
+            <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="58.0" prefWidth="246.0" styleClass="label-on-cart-item" text="Oolong Tea plus Mango bla" wrapText="true" />
          </children>
       </HBox>
-      <JFXButton fx:id="increaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="33.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+      <JFXButton fx:id="increaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="33.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
          <graphic>
             <FontAwesomeIcon iconName="PLUS" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="decreaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="439.0" layoutY="68.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+      <JFXButton fx:id="decreaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="68.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
          <graphic>
             <FontAwesomeIcon iconName="MINUS" />
          </graphic>
       </JFXButton>
-      <Label fx:id="quantityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="45.0" prefHeight="35.0" prefWidth="28.0" text="8">
+      <Label fx:id="quantityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="45.0" prefHeight="35.0" prefWidth="28.0" text="8">
          <font>
             <Font name="Open Sans" size="15.0" />
          </font>
       </Label>
-      <Line endX="100.0" layoutX="329.0" layoutY="72.0" startX="80.0" stroke="#ff8e17" />
-      <HBox alignment="CENTER_LEFT" layoutX="141.0" layoutY="67.0" prefHeight="21.0" prefWidth="127.0">
+      <Line endX="100.0" layoutX="343.0" layoutY="72.0" startX="80.0" stroke="#ff8e17" />
+      <HBox alignment="CENTER_LEFT" layoutX="150.0" layoutY="68.0" prefHeight="21.0" prefWidth="127.0">
          <children>
             <Label fx:id="priceLabel" contentDisplay="CENTER" text="10,000 đ">
                <font>

@@ -5,28 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 public class Orders {
-    private int orderId;
     private LocalDateTime time;
     private String location;
-    private List<Items> items;
-    private int customerId;
-    private double totalPrice;
+    private List<OnCartItems> items;
+    private String customerUsername;
+    private double totalPrice = 0.0;
 
-    public Orders(int orderId, LocalDateTime time, String location, List<Items> items, int customerId) {
-        this.orderId = orderId;
+    public Orders( LocalDateTime time, String location, List<OnCartItems> items, String customerUsername) {
         this.time = time;
         this.location = location;
         this.items = items;
-        this.customerId = customerId;
-        totalPrice = 0.0;
+        this.customerUsername = customerUsername;
         for (Items item : items) {
             totalPrice += item.getPrice();
         }
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
+
 
     public LocalDateTime getTime() {
         return time;
@@ -36,16 +31,16 @@ public class Orders {
         return location;
     }
 
-    public List<Items> getItems() {
+    public List<OnCartItems> getItems() {
         return items;
     }
 
-    public void addItems(Items items) {
+    public void addItems(OnCartItems items) {
         this.items.add(items);
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public String getCustomerId() {
+        return customerUsername;
     }
 
     public double getTotalPrice() {
@@ -55,11 +50,10 @@ public class Orders {
     @Override
     public String toString() {
         return "Orders{" +
-                "orderId=" + orderId +
                 ", time=" + time +
                 ", location='" + location + '\'' +
                 ", items=" + items +
-                ", customerId=" + customerId +
+                ", customerId=" + customerUsername +
                 ", totalPrice=" + totalPrice +
                 '}';
     }

@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.w3c.dom.events.MouseEvent;
-import sample.data.Data;
 import sample.main.InternetCafeFoodOrderApp;
 import sample.main.MyListener;
 import sample.models.OnCartItems;
@@ -37,7 +36,6 @@ public class OnCartItemControl {
     private JFXButton decreaseQuantityButton;
     @FXML
     private JFXButton deleteButton;
-    private int itemIndex;
     private double price;
     private double totalPrice;
     private int quantity;
@@ -94,8 +92,8 @@ public class OnCartItemControl {
         System.out.println(quantity);
         quantityLabel.setText(String.valueOf(quantity));
         calculateTotal();
-        Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
-        mainFrameControl.upDateTotalPriceFromOnCartItem();
+        mainFrameControl.setQuantityForItem(item, quantity);
+        mainFrameControl.refreshOrderTotalPrice();
         mainFrameControl.setNumberOfItemOnCartLabel();
     }
 
@@ -107,8 +105,8 @@ public class OnCartItemControl {
             quantity--;
             quantityLabel.setText(String.valueOf(quantity));
             calculateTotal();
-            Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
-            mainFrameControl.upDateTotalPriceFromOnCartItem();
+            mainFrameControl.setQuantityForItem(item, quantity);
+            mainFrameControl.refreshOrderTotalPrice();
             mainFrameControl.setNumberOfItemOnCartLabel();
         }
     }
@@ -163,7 +161,5 @@ public class OnCartItemControl {
         // Set total price
         totalPrice = price * quantity;
         totalPriceLabel.setText(df.format(totalPrice) + InternetCafeFoodOrderApp.CURRENCY);
-
-        itemIndex = Data.getOnCartItemList().indexOf(item);
     }
 }
