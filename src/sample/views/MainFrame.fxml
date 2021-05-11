@@ -87,9 +87,9 @@
                               <FontAwesomeIcon fill="#6f6f6f" iconName="TIMES" size="20" tabSize="0" />
                            </graphic>
                         </JFXButton>
-                        <HBox alignment="CENTER" layoutX="871.0" layoutY="21.0" prefHeight="25.0" prefWidth="25.0" styleClass="label-cart" stylesheets="@../css/Style.css">
+                        <HBox alignment="CENTER" layoutX="875.0" layoutY="15.0" prefHeight="25.0" prefWidth="25.0" styleClass="label-cart" stylesheets="@../css/Style.css">
                            <children>
-                              <Label fx:id="numberOfItemLabel" alignment="CENTER" contentDisplay="CENTER" text="0" />
+                              <Label fx:id="numberOfItemOnCartLabel" alignment="CENTER" contentDisplay="CENTER" text="0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="320.0" layoutY="25.0" prefHeight="50.0" prefWidth="311.0">
@@ -384,19 +384,24 @@
                               <Font name="Open Sans Semibold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="orderTotalPrice" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="513.0" layoutY="59.0" prefHeight="41.0" prefWidth="168.0" text="100,000" textFill="WHITE">
-                           <font>
-                              <Font size="31.0" />
-                           </font>
-                        </Label>
                         <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="671.0" layoutY="11.0" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" onAction="#closeMyOrderPaneButton" prefHeight="20.0" prefWidth="20.0">
                            <graphic>
                               <FontAwesomeIcon iconName="TIMES" size="20" />
                            </graphic>
                         </JFXButton>
+                        <Label fx:id="orderTotalPrice" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="562.0" layoutY="48.0" prefHeight="46.0" prefWidth="109.0" text="0 đ" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="orderTotalPrice1" contentDisplay="CENTER" layoutX="509.0" layoutY="48.0" prefHeight="46.0" prefWidth="53.0" text="Total:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
-                  <ScrollPane fx:id="orderScroll" hbarPolicy="NEVER" layoutX="10.0" layoutY="114.0" maxHeight="470.0" prefWidth="680.0" style="-fx-background-color: white;">
+                  <ScrollPane fx:id="orderScroll" hbarPolicy="NEVER" layoutX="10.0" layoutY="115.0" maxHeight="470.0" prefWidth="680.0" style="-fx-background-color: white;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -408,7 +413,7 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="591.0" prefHeight="35.0" prefWidth="131.0" style="-fx-background-color: #f5f5f5;" text="Make order">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="591.0" prefHeight="35.0" prefWidth="131.0" style="-fx-background-color: #FF8C00;" text="Make order" textFill="WHITE">
                      <font>
                         <Font name="Open Sans Semibold" size="15.0" />
                      </font>

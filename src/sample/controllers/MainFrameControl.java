@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.DB.ItemsDAO;
 import sample.data.Data;
 import sample.main.InternetCafeFoodOrderApp;
@@ -33,80 +34,54 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainFrameControl implements Initializable {
+    private final Stage thisStage;
     @FXML
     private Button closeButton;
-
     @FXML
     private JFXButton coffeeButton;
-
     @FXML
     private BorderPane mainBorderPane;
-
-
     @FXML
-    private Label numberOfItemLabel;
-
+    private Label numberOfItemOnCartLabel;
     @FXML
     private GridPane grid;
-
     @FXML
     private ScrollPane scroll;
-
     @FXML
     private Pane selectQuantityPane;
-
     @FXML
     private Label selectedName;
-
     @FXML
     private Label selectedPrice;
-
     @FXML
     private ImageView selectedImg;
-
     @FXML
     private TextField quantityTextField;
-
     @FXML
     private JFXButton addButton;
-
     @FXML
     private JFXButton cancelButton;
-
     @FXML
     private ImageView cartIcon;
-
     @FXML
     private Label selectedTabName;
-
     @FXML
     private GridPane orderGrid;
-
     @FXML
     private ScrollPane orderScroll;
-
     @FXML
     private Pane myOrderPane;
-
-
-
     @FXML
     private Label orderTotalPrice;
-
-
-
-    private List<Orders> ordersList = new ArrayList<>();
-    private List<Items> itemList = new ArrayList<>();
-    private List<OnCartItems> onCartItemsList = new ArrayList<>();
+    private final List<Orders> ordersList = new ArrayList<>();
+    private final List<Items> itemList = new ArrayList<>();
+    private final List<OnCartItems> onCartItemsList = new ArrayList<>();
     private MyListener myListener;
     private int selectedQuantity = 1;
     private Items selectedItem = new Items();
     private OnCartItems selectedOnCartItem;
 
-
-
-    private final Stage thisStage;
-    public MainFrameControl(){
+    public MainFrameControl() {
 
         // Create the new stage
         thisStage = new Stage();
@@ -130,6 +105,8 @@ public class MainFrameControl implements Initializable {
      * Show the stage that was loaded in the constructor
      */
     public void showStage() {
+
+        thisStage.initStyle(StageStyle.UNDECORATED);
         thisStage.show();
     }
 
@@ -144,18 +121,24 @@ public class MainFrameControl implements Initializable {
         refreshOrderTotalPrice();
     }
 
-    public void deleteSelectedItemOnCart(OnCartItems item){
+    public void deleteSelectedItemOnCart(OnCartItems item) {
         Data.removeItem(item);
         refreshOrderTotalPrice();
         populateOnCartItemList();
     }
 
-
-
+    public void setNumberOfItemOnCartLabel(){
+        int numberOfAllItem = 0;
+        for (OnCartItems i : Data.getOnCartItemList()) {
+            numberOfAllItem += i.getQuantity();
+        }
+        numberOfItemOnCartLabel.setText(String.valueOf(numberOfAllItem));
+    }
 
 
     /**
      * COFFEE BUTTON
+     *
      * @param event
      * @throws IOException
      */
@@ -167,49 +150,54 @@ public class MainFrameControl implements Initializable {
 
     /**
      * ENERGY DRINK BUTTON
+     *
      * @param event
      */
     @FXML
-    private void setEnergyDrinkButton(ActionEvent event){
+    private void setEnergyDrinkButton(ActionEvent event) {
         selectedTabName.setText("Energy Drinks");
     }
 
     /**
      * BEVERAGES BUTTON
+     *
      * @param event
      */
     @FXML
-    private void setBeveragesButton(ActionEvent event){
+    private void setBeveragesButton(ActionEvent event) {
         populateMenu("beverages");
         selectedTabName.setText("Beverages");
     }
 
     /**
      * FASTFOOD BUTTON
+     *
      * @param event
      */
     @FXML
-    private void setFastFoodButton(ActionEvent event){
+    private void setFastFoodButton(ActionEvent event) {
         selectedTabName.setText("Fastfood");
     }
 
     /**
      * SAVOURY BUTTON
+     *
      * @param event
      */
     @FXML
-    private void setSavouryButton(ActionEvent event){
+    private void setSavouryButton(ActionEvent event) {
         selectedTabName.setText("Savoury");
     }
 
     /**
      * PLUS BUTTON
      * Increase quantity of selected item by 1
+     *
      * @param event
      */
     @FXML
-    private void setPlusButton(ActionEvent event){
-        selectedQuantity ++;
+    private void setPlusButton(ActionEvent event) {
+        selectedQuantity++;
         System.out.println(selectedQuantity);
         quantityTextField.setText(String.valueOf(selectedQuantity));
     }
@@ -217,12 +205,13 @@ public class MainFrameControl implements Initializable {
     /**
      * MINUS BUTTON
      * Decrease quantity of the selected item by 1
+     *
      * @param event
      */
     @FXML
-    private void setMinusButton(ActionEvent event){
-        if (selectedQuantity - 1 > 0){
-            selectedQuantity --;
+    private void setMinusButton(ActionEvent event) {
+        if (selectedQuantity - 1 > 0) {
+            selectedQuantity--;
             quantityTextField.setText(String.valueOf(selectedQuantity));
         }
     }
@@ -230,10 +219,11 @@ public class MainFrameControl implements Initializable {
     /**
      * ADD BUTTON
      * Add selected item to the shopping cart
+     *
      * @param event
      */
     @FXML
-    private void setAddButton(ActionEvent event){
+    private void setAddButton(ActionEvent event) {
         // Create new item to put on cart
         OnCartItems newItem = new OnCartItems(selectedItem);
         // Set the quantity of new item
@@ -246,26 +236,28 @@ public class MainFrameControl implements Initializable {
 
         // Then hide the selecting quantity panel
         selectQuantityPane.setVisible(false);
-        Data.getOnCartItemList().forEach(System.out::println);
+        setNumberOfItemOnCartLabel();
     }
 
     /**
      * CANCEL BUTTON
      * Hide the selecting quantity panel
+     *
      * @param event
      */
     @FXML
-    private void setCancelButton(ActionEvent event){
+    private void setCancelButton(ActionEvent event) {
         selectQuantityPane.setVisible(false);
         selectedQuantity = 1;
     }
 
     /**
      * SHOPPING CART BUTTON
+     *
      * @param event
      */
     @FXML
-    private void setShoppingCartButton(ActionEvent event){
+    private void setShoppingCartButton(ActionEvent event) {
         myOrderPane.setVisible(true);
         populateOnCartItemList();
         refreshOrderTotalPrice();
@@ -274,6 +266,7 @@ public class MainFrameControl implements Initializable {
 
     /**
      * CLOSE BUTTON
+     *
      * @param event
      */
     @FXML
@@ -283,21 +276,19 @@ public class MainFrameControl implements Initializable {
     }
 
     @FXML
-    private void closeMyOrderPaneButton(ActionEvent event){
+    private void closeMyOrderPaneButton(ActionEvent event) {
         myOrderPane.setVisible(false);
     }
 
     @FXML
-    private void calculateTotalButton(ActionEvent event){
+    private void calculateTotalButton(ActionEvent event) {
         refreshOrderTotalPrice();
     }
 
 
-
-
-
     /**
      * Set the choosen item on menu
+     *
      * @param item
      */
     private void setChosenItem(Items item) {
@@ -309,9 +300,10 @@ public class MainFrameControl implements Initializable {
 
     /**
      * Populate menu with items
+     *
      * @param item
      */
-    private void populateSelectQuantityPane(Items item){
+    private void populateSelectQuantityPane(Items item) {
         this.selectedName.setText(item.getName());
         DecimalFormat df = new DecimalFormat("#,###");
         this.selectedPrice.setText(df.format(item.getPrice()) + " " + InternetCafeFoodOrderApp.CURRENCY);
@@ -324,9 +316,10 @@ public class MainFrameControl implements Initializable {
      * Populate GridPane with items of type
      * Such as "cafe" or "fastfood"
      * Base on the database table name
+     *
      * @param type
      */
-    private void populateMenu(String type){
+    private void populateMenu(String type) {
         scroll.setVvalue(0.0);
         grid.getChildren().clear();
         itemList.clear();
@@ -364,7 +357,7 @@ public class MainFrameControl implements Initializable {
         }
     }
 
-    public void populateOnCartItemList(){
+    public void populateOnCartItemList() {
         orderScroll.setVvalue(0.0);
         orderGrid.getChildren().clear();
         onCartItemsList.clear();
@@ -374,7 +367,7 @@ public class MainFrameControl implements Initializable {
                 @Override
                 public void onClickListener(Items item) throws IOException {
                     for (int i = 0; i < Data.getOnCartItemList().size(); i++) {
-                        if (Data.getOnCartItemList().get(i).getName().equals(item.getName())){
+                        if (Data.getOnCartItemList().get(i).getName().equals(item.getName())) {
                             getSelectedOnCartItem(Data.getOnCartItemList().get(i));
                             System.out.println(Data.getOnCartItemList().get(i));
                             break;
@@ -397,27 +390,24 @@ public class MainFrameControl implements Initializable {
                 onCartItemController.setOnCartItemData(onCartItemsList.get(i), myListener);
 
 
-
-
-
                 if (column == 1) {
                     column = 0;
                     ++row;
                 }
 
                 orderGrid.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(10));
+                GridPane.setMargin(pane, new Insets(5));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void getSelectedOnCartItem(OnCartItems item){
+    private void getSelectedOnCartItem(OnCartItems item) {
         selectedOnCartItem = item;
     }
 
-    public void refreshOrderTotalPrice(){
+    public void refreshOrderTotalPrice() {
         double totalPrice = 0;
         for (OnCartItems onCartItems : Data.getOnCartItemList()) {
             totalPrice += onCartItems.getPrice() * onCartItems.getQuantity();

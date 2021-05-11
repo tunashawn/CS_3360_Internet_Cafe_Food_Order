@@ -1,7 +1,6 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +17,8 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class OnCartItemControl {
+    private final MainFrameControl mainFrameControl;
+    private final Stage thisStage;
     @FXML
     private ImageView imgLabel;
     @FXML
@@ -36,17 +37,12 @@ public class OnCartItemControl {
     private JFXButton decreaseQuantityButton;
     @FXML
     private JFXButton deleteButton;
-
     private int itemIndex;
     private double price;
     private double totalPrice;
     private int quantity;
     private MyListener myListener;
     private OnCartItems item;
-
-    private Stage thisStage;
-
-    private final MainFrameControl mainFrameControl;
 
 
     public OnCartItemControl(MainFrameControl mainFrameControl) {
@@ -65,7 +61,6 @@ public class OnCartItemControl {
 
             // Load the scene
             thisStage.setScene(new Scene(loader.load()));
-
 
 
         } catch (IOException e) {
@@ -94,41 +89,43 @@ public class OnCartItemControl {
     /**
      * Increase quantity of selected item by 1
      */
-    private void setPlusButton(){
-        quantity ++;
+    private void setPlusButton() {
+        quantity++;
         System.out.println(quantity);
         quantityLabel.setText(String.valueOf(quantity));
         calculateTotal();
         Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
         mainFrameControl.upDateTotalPriceFromOnCartItem();
+        mainFrameControl.setNumberOfItemOnCartLabel();
     }
 
     /**
      * Decrease quantity of the selected item by 1
      */
-    private void setMinusButton(){
-        if (quantity - 1 > 0){
-            quantity --;
+    private void setMinusButton() {
+        if (quantity - 1 > 0) {
+            quantity--;
             quantityLabel.setText(String.valueOf(quantity));
             calculateTotal();
             Data.getOnCartItemList().get(itemIndex).setQuantity(quantity);
             mainFrameControl.upDateTotalPriceFromOnCartItem();
+            mainFrameControl.setNumberOfItemOnCartLabel();
         }
     }
 
     /**
      * Delete this item from Order List
      */
-    private void setDeleteButton(){
+    private void setDeleteButton() {
         mainFrameControl.deleteSelectedItemOnCart(this.item);
     }
 
 
-
     @FXML
-    private void click(MouseEvent mouseEvent){
+    private void click(MouseEvent mouseEvent) {
 
     }
+
     @FXML
     private void click(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         myListener.onClickListener(item);
@@ -138,7 +135,7 @@ public class OnCartItemControl {
         this.myListener = myListener;
     }
 
-    private void calculateTotal(){
+    private void calculateTotal() {
         totalPrice = quantity * price;
         DecimalFormat df = new DecimalFormat("#,###");
         totalPriceLabel.setText(df.format(totalPrice) + " " + InternetCafeFoodOrderApp.CURRENCY);
@@ -146,9 +143,10 @@ public class OnCartItemControl {
 
     /**
      * Populate the scene with data from item
+     *
      * @param item
      */
-    public void setOnCartItemData(OnCartItems item, MyListener myListener){
+    public void setOnCartItemData(OnCartItems item, MyListener myListener) {
         this.myListener = myListener;
         this.item = item;
         // Set img

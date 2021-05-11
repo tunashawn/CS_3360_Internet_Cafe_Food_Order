@@ -7,16 +7,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="125.0" maxWidth="-Infinity" minHeight="125.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="125.0" prefWidth="650.0" style="-fx-background-color: #f3f3f3;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: #f3f3f3;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="imgLabel" fitHeight="115.0" fitWidth="115.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/ebb7b4fada0a3077ebc5a20f0cc0052b.jpg" />
-         </image>
-      </ImageView>
+      <StackPane layoutX="5.0" layoutY="5.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <ImageView fx:id="imgLabel" fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/ebb7b4fada0a3077ebc5a20f0cc0052b.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
       <HBox alignment="BOTTOM_LEFT" layoutX="141.0" layoutY="11.0" prefHeight="51.0" prefWidth="264.0">
          <children>
             <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="265.0" styleClass="label-on-cart-item" text="Oolong Tea plus" wrapText="true" />
@@ -47,16 +52,19 @@
             </Label>
          </children>
       </HBox>
-      <Label layoutX="547.0" layoutY="43.0" text="Total">
+      <Label layoutX="539.0" layoutY="43.0" text="Total">
          <font>
             <Font name="Open Sans Semibold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="totalPriceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="521.0" layoutY="61.0" prefHeight="21.0" prefWidth="88.0" text="80,000 đ">
+      <Label fx:id="totalPriceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="61.0" prefHeight="21.0" prefWidth="88.0" text="80,000 đ">
          <font>
             <Font name="Open Sans" size="15.0" />
          </font>
       </Label>
-      <JFXButton fx:id="deleteButton" layoutX="606.0" layoutY="7.0" text="Delete" textFill="#575757" />
+      <JFXButton fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="622.0" layoutY="7.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" prefHeight="16.0" prefWidth="16.0" textFill="#575757">
+         <graphic>
+            <FontAwesomeIcon fill="#00000059" iconName="TIMES" size="15" />
+         </graphic></JFXButton>
    </children>
 </AnchorPane>
