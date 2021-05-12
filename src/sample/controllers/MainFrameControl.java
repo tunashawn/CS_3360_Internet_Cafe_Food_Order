@@ -469,8 +469,7 @@ public class MainFrameControl implements Initializable {
 
     @FXML
     private void setLogOutButton(ActionEvent event){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
+        thisStage.close();
         LoginControl loginControl = new LoginControl();
         loginControl.showStage();
 
