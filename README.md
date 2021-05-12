@@ -5,5 +5,5 @@ Taught by Prof. Cao Tien Dung at Hanoi University Of Science and Technology
 
 This application is developed based on the idea of food and beverage order app in the internet café
 
-It is still in development and not recommended to use as reference because the structure is not really good as I learn javafx by developing this app
+It is still in development and not recommended to use as reference because the code is not well organized as I learn javafx by developing this app
 
