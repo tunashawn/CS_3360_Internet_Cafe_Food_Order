@@ -116,6 +116,7 @@ public class OnCartItemControl {
      */
     private void setDeleteButton() {
         mainFrameControl.deleteSelectedItemOnCart(this.item);
+        mainFrameControl.setNoOrderToDisplayPane();
     }
 
 

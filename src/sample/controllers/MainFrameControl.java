@@ -161,7 +161,7 @@ public class MainFrameControl implements Initializable {
     @FXML
     private void setCoffeeButton(ActionEvent event) throws IOException {
         populateMenu("cafe");
-        selectedTabName.setText("WcCafé® Drinks");
+        selectedTabName.setText("Coffee");
     }
 
     /**
@@ -172,7 +172,7 @@ public class MainFrameControl implements Initializable {
     @FXML
     private void setEnergyDrinkButton(ActionEvent event) {
         populateMenu("energy_drinks");
-        selectedTabName.setText("Energy Drinks");
+        selectedTabName.setText("Energy Drink");
     }
 
     /**
@@ -183,17 +183,18 @@ public class MainFrameControl implements Initializable {
     @FXML
     private void setBeveragesButton(ActionEvent event) {
         populateMenu("beverages");
-        selectedTabName.setText("Beverages");
+        selectedTabName.setText("Beverage");
     }
 
     /**
-     * FASTFOOD BUTTON
+     * BANH MI BUTTON
      *
      * @param event
      */
     @FXML
     private void setFastFoodButton(ActionEvent event) {
-        selectedTabName.setText("Fastfood");
+        populateMenu("banhmi");
+        selectedTabName.setText("Banh Mi");
     }
 
     /**
@@ -278,12 +279,10 @@ public class MainFrameControl implements Initializable {
         myOrderPane.setVisible(true);
         populateMyOrder();
         refreshOrderTotalPrice();
-        if (onCartItemsList.size() > 0){
-            noOrderToDisplayPane.setVisible(false);
-        } else {
-            noOrderToDisplayPane.setVisible(true);
-        }
+        setNoOrderToDisplayPane();
     }
+
+
 
 
     /**
@@ -489,6 +488,12 @@ public class MainFrameControl implements Initializable {
             Orders newOrder = new Orders(LocalDateTime.now(), "Hanoi", onCartItemsList, user.getUsername());
             System.out.println(newOrder);
         }
-
+    }
+    public void setNoOrderToDisplayPane(){
+        if (onCartItemsList.size() > 0){
+            noOrderToDisplayPane.setVisible(false);
+        } else {
+            noOrderToDisplayPane.setVisible(true);
+        }
     }
 }
