@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.controllers.LoginControl;
 import sample.controllers.MainFrameControl;
 
 public class InternetCafeFoodOrderApp extends Application {
@@ -18,9 +19,12 @@ public class InternetCafeFoodOrderApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        MainFrameControl mainFrameControl = new MainFrameControl();
+        LoginControl loginControl = new LoginControl();
+        loginControl.showStage();
 
-        mainFrameControl.showStage();
+//        MainFrameControl mainFrameControl = new MainFrameControl();
+//
+//        mainFrameControl.showStage();
 
 
 //        Parent root = FXMLLoader.load(getClass().getResource("/sample/views/MainFrame.fxml"));

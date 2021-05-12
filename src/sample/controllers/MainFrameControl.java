@@ -92,11 +92,6 @@ public class MainFrameControl implements Initializable {
 
     public MainFrameControl() {
 
-        // TEST USER
-        user = new Users();
-        user.setUsername("shawnv1401");
-        user.setBalance(100000);
-
         // Create the new stage
         thisStage = new Stage();
 
@@ -123,12 +118,15 @@ public class MainFrameControl implements Initializable {
         thisStage.initStyle(StageStyle.UNDECORATED);
         thisStage.show();
     }
+    public void setUserData(Users user){
+        this.user = user;
+        usernameLabel.setText(user.getUsername());
+        balanceLabel.setText(df.format(user.getBalance()) + " " + "đ");
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(user.getUsername());
-        balanceLabel.setText(df.format(user.getBalance()) + " " + "đ");
 
         selectQuantityPane.setVisible(false);
         myOrderPane.setVisible(false);
@@ -140,6 +138,7 @@ public class MainFrameControl implements Initializable {
         refreshOrderTotalPrice();
         populateMyOrder();
     }
+
 
     public void setNumberOfItemOnCartLabel(){
         int numberOfAllItem = 0;
@@ -181,7 +180,7 @@ public class MainFrameControl implements Initializable {
      * @param event
      */
     @FXML
-    private void setBeveragesButton(ActionEvent event) {
+    private void setBeverageButton(ActionEvent event) {
         populateMenu("beverages");
         selectedTabName.setText("Beverage");
     }
@@ -192,7 +191,7 @@ public class MainFrameControl implements Initializable {
      * @param event
      */
     @FXML
-    private void setFastFoodButton(ActionEvent event) {
+    private void setBanhMiButton(ActionEvent event) {
         populateMenu("banhmi");
         selectedTabName.setText("Banh Mi");
     }
@@ -203,8 +202,9 @@ public class MainFrameControl implements Initializable {
      * @param event
      */
     @FXML
-    private void setSavouryButton(ActionEvent event) {
-        selectedTabName.setText("Savoury");
+    private void setSnackButton(ActionEvent event) {
+        populateMenu("snack");
+        selectedTabName.setText("Snack");
     }
 
     /**
@@ -291,7 +291,7 @@ public class MainFrameControl implements Initializable {
      * @param event
      */
     @FXML
-    public void handleCloseButtonAction(ActionEvent event) {
+    private void handleCloseButtonAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
@@ -467,7 +467,14 @@ public class MainFrameControl implements Initializable {
     }
 
 
+    @FXML
+    private void setLogOutButton(ActionEvent event){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+        LoginControl loginControl = new LoginControl();
+        loginControl.showStage();
 
+    }
 
     @FXML
     private void setMyAccountButton(ActionEvent event){

@@ -4,19 +4,13 @@ import javafx.scene.image.Image;
 
 public class Users {
     private String username;
-//    private Image avatar;
+    private String password;
     private double balance;
-
-    public Users(String username, double balance) {
-        this.username = username;
-//        this.avatar = avatar;
-        this.balance = balance;
-    }
 
     public Users() {
         this.username = "";
-//        this.avatar = avatar;
-        this.balance = balance;
+        this.password = "";
+        this.balance = 0;
     }
 
     public String getUsername() {
@@ -27,13 +21,13 @@ public class Users {
         this.username = username;
     }
 
-//    public Image getAvatar() {
-//        return avatar;
-//    }
+    public String getPassword() {
+        return password;
+    }
 
-//    public void setAvatar(Image avatar) {
-//        this.avatar = avatar;
-//    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public double getBalance() {
         return balance;
