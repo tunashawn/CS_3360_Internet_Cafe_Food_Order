@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: white; -fx-padding: 4; -fx-border-color: #e67e22; -fx-border-radius: 20 20 20 20;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane layoutX="14.0" layoutY="6.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <ImageView fx:id="imgLabel" fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/haha.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <HBox alignment="BOTTOM_LEFT" layoutX="150.0" prefHeight="63.0" prefWidth="264.0">
+         <children>
+            <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="58.0" prefWidth="246.0" styleClass="label-on-cart-item" text="Oolong Tea plus Mango bla" wrapText="true" />
+         </children>
+      </HBox>
+      <JFXButton fx:id="increaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="33.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+         <graphic>
+            <FontAwesomeIcon iconName="PLUS" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="decreaseQuantityButton" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="68.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #f5f5f5;" styleClass="button-up-down">
+         <graphic>
+            <FontAwesomeIcon iconName="MINUS" />
+         </graphic>
+      </JFXButton>
+      <Label fx:id="quantityLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="45.0" prefHeight="35.0" prefWidth="28.0" text="8">
+         <font>
+            <Font name="Open Sans" size="15.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="343.0" layoutY="72.0" startX="80.0" stroke="#ff8e17" />
+      <HBox alignment="CENTER_LEFT" layoutX="150.0" layoutY="68.0" prefHeight="21.0" prefWidth="127.0">
+         <children>
+            <Label fx:id="priceLabel" contentDisplay="CENTER" text="10,000 đ">
+               <font>
+                  <Font name="Open Sans" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="539.0" layoutY="43.0" text="Total">
+         <font>
+            <Font name="Open Sans Semibold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalPriceLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="513.0" layoutY="61.0" prefHeight="21.0" prefWidth="88.0" text="80,000 đ">
+         <font>
+            <Font name="Open Sans" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="622.0" layoutY="7.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" prefHeight="16.0" prefWidth="16.0" textFill="#575757">
+         <graphic>
+            <FontAwesomeIcon fill="#00000059" iconName="TIMES" size="15" />
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>
