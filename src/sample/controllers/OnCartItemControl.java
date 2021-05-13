@@ -7,17 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
-import sample.main.InternetCafeFoodOrderApp;
-import sample.main.MyListener;
+import sample.main.Main;
 import sample.models.OnCartItems;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class OnCartItemControl {
-    private final MainFrameControl mainFrameControl;
-    private final Stage thisStage;
+
     @FXML
     private ImageView imgLabel;
     @FXML
@@ -36,35 +33,29 @@ public class OnCartItemControl {
     private JFXButton decreaseQuantityButton;
     @FXML
     private JFXButton deleteButton;
-    private double price;
-    private double totalPrice;
+    private final MyOrderControl myOrderControl;
+    private final Stage thisStage;
     private int quantity;
-    private MyListener myListener;
     private OnCartItems item;
+    private int price;
+    private int totalPrice;
 
+    public OnCartItemControl(MyOrderControl myOrderControl) {
+        this.myOrderControl = myOrderControl;
 
-    public OnCartItemControl(MainFrameControl mainFrameControl) {
-        // We received the first controller, now let's make it usable throughout this controller.
-        this.mainFrameControl = mainFrameControl;
-
-        // Create the new stage
         thisStage = new Stage();
 
         // Load the FXML file
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/OnCartItem.fxml"));
 
-            // Set this class as the controller
             loader.setController(this);
 
-            // Load the scene
             thisStage.setScene(new Scene(loader.load()));
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void showStage() {
@@ -80,7 +71,6 @@ public class OnCartItemControl {
 
         deleteButton.setOnAction(event -> setDeleteButton());
 
-
     }
 
 
@@ -92,9 +82,8 @@ public class OnCartItemControl {
         System.out.println(quantity);
         quantityLabel.setText(String.valueOf(quantity));
         calculateTotal();
-        mainFrameControl.setQuantityForItem(item, quantity);
-        mainFrameControl.refreshOrderTotalPrice();
-        mainFrameControl.setNumberOfItemOnCartLabel();
+        myOrderControl.setQuantityForItem(item, quantity);
+        myOrderControl.updateTotalPrice();
     }
 
     /**
@@ -105,9 +94,8 @@ public class OnCartItemControl {
             quantity--;
             quantityLabel.setText(String.valueOf(quantity));
             calculateTotal();
-            mainFrameControl.setQuantityForItem(item, quantity);
-            mainFrameControl.refreshOrderTotalPrice();
-            mainFrameControl.setNumberOfItemOnCartLabel();
+            myOrderControl.setQuantityForItem(item, quantity);
+            myOrderControl.updateTotalPrice();
         }
     }
 
@@ -115,29 +103,12 @@ public class OnCartItemControl {
      * Delete this item from Order List
      */
     private void setDeleteButton() {
-        mainFrameControl.deleteSelectedItemOnCart(this.item);
-        mainFrameControl.setNoOrderToDisplayPane();
-    }
-
-
-    @FXML
-    private void click(MouseEvent mouseEvent) {
-
-    }
-
-    @FXML
-    private void click(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        myListener.onClickListener(item);
-    }
-
-    public void setMyListener(MyListener myListener) {
-        this.myListener = myListener;
+        myOrderControl.deleteSelectedItemOnCart(this.item);
     }
 
     private void calculateTotal() {
         totalPrice = quantity * price;
-        DecimalFormat df = new DecimalFormat("#,###");
-        totalPriceLabel.setText(df.format(totalPrice) + " " + InternetCafeFoodOrderApp.CURRENCY);
+        totalPriceLabel.setText(Main.formatMoney(totalPrice));
     }
 
     /**
@@ -145,15 +116,14 @@ public class OnCartItemControl {
      *
      * @param item
      */
-    public void setOnCartItemData(OnCartItems item, MyListener myListener) {
-        this.myListener = myListener;
+    public void setOnCartItemData(OnCartItems item) {
         this.item = item;
         // Set img
         imgLabel.setImage(item.getImgSrc());
         // Set price label
         price = item.getPrice();
         DecimalFormat df = new DecimalFormat("#,###");
-        priceLabel.setText(df.format(price) + InternetCafeFoodOrderApp.CURRENCY);
+        priceLabel.setText(df.format(price) + Main.CURRENCY);
         // Set name label
         nameLabel.setText(item.getName());
         // Set quantity label
@@ -161,6 +131,6 @@ public class OnCartItemControl {
         quantityLabel.setText(String.valueOf(item.getQuantity()));
         // Set total price
         totalPrice = price * quantity;
-        totalPriceLabel.setText(df.format(totalPrice) + InternetCafeFoodOrderApp.CURRENCY);
+        totalPriceLabel.setText(df.format(totalPrice) + Main.CURRENCY);
     }
 }

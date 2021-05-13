@@ -1,60 +1,46 @@
 package sample.models;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Orders {
-    private LocalDateTime time;
-    private String location;
-    private List<OnCartItems> items;
-    private String customerUsername;
-    private double totalPrice = 0.0;
+    private final int orderNumber;
+    private final String username;
+    private final LocalDateTime dateTime;
+    private final List<OnCartItems> itemsList;
+    private final int quantity;
+    private final int cost;
 
-    public Orders( LocalDateTime time, String location, List<OnCartItems> items, String customerUsername) {
-        this.time = time;
-        this.location = location;
-        this.items = items;
-        this.customerUsername = customerUsername;
-        for (Items item : items) {
-            totalPrice += item.getPrice();
-        }
+    public Orders(int orderNumber, String username, LocalDateTime dateTime, List<OnCartItems> itemsList, int quantity, int cost) {
+        this.orderNumber = orderNumber;
+        this.username = username;
+        this.dateTime = dateTime;
+        this.itemsList = itemsList;
+        this.quantity = quantity;
+        this.cost = cost;
     }
 
-
-
-    public LocalDateTime getTime() {
-        return time;
+    public int getOrderNumber() {
+        return orderNumber;
     }
 
-    public String getLocation() {
-        return location;
+    public String getUsername() {
+        return username;
     }
 
-    public List<OnCartItems> getItems() {
-        return items;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void addItems(OnCartItems items) {
-        this.items.add(items);
+    public List<OnCartItems> getItemsList() {
+        return itemsList;
     }
 
-    public String getCustomerId() {
-        return customerUsername;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                ", time=" + time +
-                ", location='" + location + '\'' +
-                ", items=" + items +
-                ", customerId=" + customerUsername +
-                ", totalPrice=" + totalPrice +
-                '}';
+    public int getCost() {
+        return cost;
     }
 }

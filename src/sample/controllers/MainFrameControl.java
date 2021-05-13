@@ -1,7 +1,6 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXScrollPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.DB.ItemsDAO;
-import sample.main.InternetCafeFoodOrderApp;
+import sample.main.Main;
 import sample.main.MyListener;
 import sample.models.Items;
 import sample.models.OnCartItems;
@@ -23,13 +22,11 @@ import sample.models.Users;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
+@SuppressWarnings("ALL")
 public class MainFrameControl implements Initializable {
 
     @FXML
@@ -84,12 +81,12 @@ public class MainFrameControl implements Initializable {
     private final Stage thisStage;
     private final List<Orders> ordersList = new ArrayList<>();
     private final List<Items> itemList = new ArrayList<>();
-    private final List<OnCartItems> onCartItemsList = new ArrayList<>();
+    private List<OnCartItems> onCartItemsList = new ArrayList<>();
 
     private Users user;
 
-    private final DecimalFormat df = new DecimalFormat("#,###");
-    private final List<String> itemNameList = new ArrayList<>();
+
+    private List<String> itemNameList = new ArrayList<>();
 
     public MainFrameControl() {
 
@@ -111,18 +108,11 @@ public class MainFrameControl implements Initializable {
         }
     }
 
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         selectQuantityPane.setVisible(false);
-        myOrderPane.setVisible(false);
         numberOfItemOnCartLabel.setText("0");
     }
-
-
-
-
 
 
     /**
@@ -221,10 +211,12 @@ public class MainFrameControl implements Initializable {
         // Set the quantity of new item
         newItem.setQuantity(selectedQuantity);
         // Add new item to list of items on shopping cart if it is not in the list yet
-        if (isCartContains(newItem))
+        if (isCartContains(newItem)) {
             System.out.println(selectedItem + " is already exist in your cart");
-        else
-            addItemToCart(newItem);
+        } else {
+            onCartItemsList.add(newItem);
+            itemNameList.add(newItem.getName());
+        }
 
         // Then hide the selecting quantity panel
         selectQuantityPane.setVisible(false);
@@ -250,10 +242,11 @@ public class MainFrameControl implements Initializable {
      */
     @FXML
     private void setShoppingCartButton(ActionEvent event) {
-        myOrderPane.setVisible(true);
-        populateMyOrder();
-        refreshOrderTotalPrice();
-        setNoOrderToDisplayPane();
+        MyOrderControl myOrderControl = new MyOrderControl(this);
+
+        myOrderControl.setData(onCartItemsList, itemNameList, user.getUsername());
+
+        myOrderControl.showStage();
     }
 
     /**
@@ -263,20 +256,14 @@ public class MainFrameControl implements Initializable {
      */
     @FXML
     private void handleCloseButtonAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
+        thisStage.close();
     }
 
-    @FXML
-    private void closeMyOrderPaneButton(ActionEvent event) {
-        myOrderPane.setVisible(false);
-    }
-
-    @FXML
-    private void calculateTotalButton(ActionEvent event) {
-        refreshOrderTotalPrice();
-    }
-
+    /**
+     * LOG OUT BUTTON
+     *
+     * @param event
+     */
     @FXML
     private void setLogOutButton(ActionEvent event) {
         thisStage.close();
@@ -285,49 +272,27 @@ public class MainFrameControl implements Initializable {
 
     }
 
+    /**
+     * MY ACCOUNT BUTTON
+     *
+     * @param event
+     */
     @FXML
     private void setMyAccountButton(ActionEvent event) {
 
     }
 
+    /**
+     * ORDER HISTORY BUTTON
+     */
     @FXML
     private void setOrderHistoryButton(ActionEvent event) {
+        OrderHistoryControl orderHistoryControl = new OrderHistoryControl();
+        orderHistoryControl.setData(ordersList);
+        orderHistoryControl.showStage();
 
     }
 
-    @FXML
-    private void setMakeOrderButton(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Purchase confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("Confirm purchase?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            Orders newOrder = new Orders(LocalDateTime.now(), "Hanoi", onCartItemsList, user.getUsername());
-            System.out.println(newOrder);
-        }
-    }
-
-    /**
-     * Show the stage that was loaded in the constructor
-     */
-    public void showStage() {
-
-        thisStage.initStyle(StageStyle.UNDECORATED);
-        thisStage.show();
-    }
-
-    public void deleteSelectedItemOnCart(OnCartItems item) {
-        removeItemFromCart(item);
-        refreshOrderTotalPrice();
-        populateMyOrder();
-    }
-
-    public void setUserData(Users user) {
-        this.user = user;
-        usernameLabel.setText(user.getUsername());
-        balanceLabel.setText(df.format(user.getBalance()) + " " + "đ");
-    }
 
     /**
      * Set the choosen item on menu
@@ -348,7 +313,7 @@ public class MainFrameControl implements Initializable {
      */
     private void populateSelectQuantityPane(Items item) {
         this.selectedName.setText(item.getName());
-        this.selectedPrice.setText(df.format(item.getPrice()) + " " + InternetCafeFoodOrderApp.CURRENCY);
+        this.selectedPrice.setText(Main.df.format(item.getPrice()) + " " + Main.CURRENCY);
         this.selectedImg.setImage(item.getImgSrc());
         this.quantityTextField.setText("1");
         this.selectedQuantity = 1;
@@ -399,57 +364,7 @@ public class MainFrameControl implements Initializable {
         }
     }
 
-    /**
-     * Populate My Order pane
-     */
-    public void populateMyOrder() {
-        orderScroll.setVvalue(0.0);
-        orderGrid.getChildren().clear();
-
-        if (onCartItemsList.size() > 0) {
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Items item) throws IOException {
-                    for (OnCartItems i : onCartItemsList) {
-                        if (i.getName().equals(item.getName())) {
-                            getSelectedOnCartItem(i);
-                            break;
-                        }
-                    }
-                }
-            };
-        }
-        int column = 0;
-        int row = 1;
-        try {
-            for (OnCartItems item : onCartItemsList) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/sample/views/OnCartItem.fxml"));
-
-                OnCartItemControl onCartItemController = new OnCartItemControl(this);
-                fxmlLoader.setController(onCartItemController);
-                AnchorPane pane = fxmlLoader.load();
-                onCartItemController.setOnCartItemData(item, myListener);
-
-                if (column == 1) {
-                    column = 0;
-                    ++row;
-                }
-
-                orderGrid.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(5));
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void getSelectedOnCartItem(OnCartItems item) {
-        selectedOnCartItem = item;
-    }
-
-    public void setNumberOfItemOnCartLabel() {
+    private void setNumberOfItemOnCartLabel() {
         int numberOfAllItem = 0;
         if (onCartItemsList.size() > 0) {
             for (OnCartItems i : onCartItemsList) {
@@ -459,43 +374,32 @@ public class MainFrameControl implements Initializable {
         numberOfItemOnCartLabel.setText(String.valueOf(numberOfAllItem));
     }
 
-    public void setNoOrderToDisplayPane() {
-        noOrderToDisplayPane.setVisible(onCartItemsList.size() <= 0);
-    }
-
-    public void setQuantityForItem(OnCartItems item, int quantity) {
-        int index = itemNameList.indexOf(item.getName());
-        onCartItemsList.get(index).setQuantity(quantity);
-    }
-
-    // Accessing on cart items methods
-
-    public void refreshOrderTotalPrice() {
-        double totalPrice = 0;
-        for (OnCartItems onCartItems : onCartItemsList) {
-            totalPrice += onCartItems.getPrice() * onCartItems.getQuantity();
-        }
-        orderTotalPrice.setText(df.format(totalPrice) + " " + InternetCafeFoodOrderApp.CURRENCY);
-    }
-
-    public void addItemToCart(OnCartItems onCartItem) {
-        onCartItemsList.add(onCartItem);
-        itemNameList.add(onCartItem.getName());
-    }
-
-    public void removeItemFromCart(OnCartItems onCartItem) {
-        onCartItemsList.remove(onCartItem);
-        itemNameList.remove(onCartItem.getName());
-    }
-
-    public boolean isCartContains(OnCartItems onCartItem){
+    private boolean isCartContains(OnCartItems onCartItem) {
         return itemNameList.contains(onCartItem.getName());
     }
 
+    public void showStage() {
+
+        thisStage.initStyle(StageStyle.UNDECORATED);
+        thisStage.show();
+    }
 
 
+    public void setUserData(Users user) {
+        this.user = user;
+        usernameLabel.setText(user.getUsername());
+        balanceLabel.setText(Main.formatMoney(user.getBalance()));
+    }
 
 
+    public void updateOnCartItems(List<OnCartItems> onCartItemsList, List<String> itemNameList) {
+        this.onCartItemsList = onCartItemsList;
+        this.itemNameList = itemNameList;
+        setNumberOfItemOnCartLabel();
+    }
 
+    public void addOrders(Orders newOrder) {
+        ordersList.add(newOrder);
+    }
 
 }

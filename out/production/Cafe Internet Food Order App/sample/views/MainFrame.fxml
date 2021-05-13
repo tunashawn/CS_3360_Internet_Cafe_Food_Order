@@ -40,18 +40,18 @@
                <children>
                   <Pane maxHeight="100.0" maxWidth="1100.0" minHeight="100.0" minWidth="1100.0" prefHeight="100.0" prefWidth="1100.0" style="-fx-background-color: #fcfcfc;">
                      <children>
-                        <Button layoutX="993.0" layoutY="29.0" mnemonicParsing="false" onAction="#setShoppingCartButton" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fx:id="cartIcon" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/shopping_cart.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                         <Button layoutX="993.0" layoutY="29.0" mnemonicParsing="false" onAction="#setShoppingCartButton" style="-fx-background-color: transparent;">
+                             <graphic>
+                                 <ImageView fx:id="cartIcon" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                     <image>
+                                         <Image url="@../img/shopping_cart.png" />
+                                     </image>
+                                 </ImageView>
+                             </graphic>
+                             <cursor>
+                                 <Cursor fx:constant="HAND" />
+                             </cursor>
+                         </Button>
                         <HBox alignment="CENTER" layoutX="1029.0" layoutY="17.0" prefHeight="25.0" prefWidth="25.0" styleClass="label-cart" stylesheets="@../css/Style.css">
                            <children>
                               <Label fx:id="numberOfItemOnCartLabel" alignment="CENTER" contentDisplay="CENTER" />
@@ -66,35 +66,35 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button layoutX="863.0" layoutY="28.0" mnemonicParsing="false" onAction="#setMyAccountButton" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="48.0" fitWidth="48.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/outline_account_circle_black_48dp.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="929.0" layoutY="29.0" mnemonicParsing="false" onAction="#setOrderHistoryButton" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="43.0" fitWidth="43.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/history.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="1070.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <FontAwesomeIcon fill="#6f6f6f" iconName="TIMES" size="20" tabSize="0" />
-                           </graphic>
-                        </Button>
+                         <Button layoutX="863.0" layoutY="28.0" mnemonicParsing="false" onAction="#setMyAccountButton" style="-fx-background-color: transparent;">
+                             <graphic>
+                                 <ImageView fitHeight="48.0" fitWidth="48.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                     <image>
+                                         <Image url="@../img/outline_account_circle_black_48dp.png" />
+                                     </image>
+                                 </ImageView>
+                             </graphic>
+                             <cursor>
+                                 <Cursor fx:constant="HAND" />
+                             </cursor>
+                         </Button>
+                         <Button layoutX="929.0" layoutY="29.0" mnemonicParsing="false" onAction="#setOrderHistoryButton" style="-fx-background-color: transparent;">
+                             <graphic>
+                                 <ImageView fitHeight="43.0" fitWidth="43.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                     <image>
+                                         <Image url="@../img/history.png" />
+                                     </image>
+                                 </ImageView>
+                             </graphic>
+                             <cursor>
+                                 <Cursor fx:constant="HAND" />
+                             </cursor>
+                         </Button>
+                         <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="1070.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" style="-fx-background-color: transparent;">
+                             <graphic>
+                                 <FontAwesomeIcon fill="#6f6f6f" iconName="TIMES" size="20" tabSize="0" />
+                             </graphic>
+                         </Button>
                      </children>
                   </Pane>
                   <ScrollPane fx:id="scroll" fitToWidth="true" hbarPolicy="NEVER" maxHeight="700.0" minHeight="700.0" prefWidth="1100.0" style="-fx-focus-color: transparent;">
@@ -138,14 +138,14 @@
                                  <children>
                                     <Label fx:id="usernameLabel" text="Username" textFill="WHITE">
                                        <font>
-                                          <Font name="Open Sans Bold" size="14.0" />
+                                           <Font name="Open Sans Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="balanceLabel" text="100,000 đ" textFill="WHITE">
-                                       <font>
-                                          <Font name="Open Sans" size="14.0" />
-                                       </font>
-                                    </Label>
+                                     <Label fx:id="balanceLabel" text="100,000 đ" textFill="WHITE">
+                                         <font>
+                                             <Font name="Open Sans" size="14.0" />
+                                         </font>
+                                     </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -154,20 +154,20 @@
                   </GridPane>
                   <VBox alignment="CENTER" maxHeight="700.0" maxWidth="250.0" minHeight="700.0" minWidth="250.0" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #e67e22;">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="250.0" text="DRINK" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <padding>
-                              <Insets left="25.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="100.0" />
-                           </VBox.margin>
-                           <opaqueInsets>
-                              <Insets top="70.0" />
-                           </opaqueInsets>
-                        </Label>
+                         <Label prefHeight="40.0" prefWidth="250.0" text="DRINK" textFill="WHITE">
+                             <font>
+                                 <Font size="20.0" />
+                             </font>
+                             <padding>
+                                 <Insets left="25.0" />
+                             </padding>
+                             <VBox.margin>
+                                 <Insets top="100.0" />
+                             </VBox.margin>
+                             <opaqueInsets>
+                                 <Insets top="70.0" />
+                             </opaqueInsets>
+                         </Label>
                         <JFXButton fx:id="coffeeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setCoffeeButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Coffee">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
@@ -246,19 +246,19 @@
                            </padding>
                         </JFXButton>
                         <JFXButton alignment="CENTER" graphicTextGap="10.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setLogOutButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Log out">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/log_out.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <VBox.margin>
-                              <Insets top="160.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="11.0" />
-                           </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../img/log_out.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <VBox.margin>
+                                <Insets top="160.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="11.0" />
+                            </font>
                         </JFXButton>
                      </children>
                   </VBox>
@@ -360,95 +360,6 @@
                   </GridPane>
                </children>
             </VBox>
-         </children>
-      </Pane>
-      <Pane fx:id="myOrderPane" prefHeight="800.0" prefWidth="1350.0">
-         <children>
-            <Rectangle height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1350.0">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color opacity="0.5986956357955933" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.9961685823754789">
-                           <color>
-                              <Color opacity="0.37391307950019836" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color opacity="0.37391307950019836" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Rectangle>
-            <Pane layoutX="325.0" layoutY="80.0" prefHeight="641.0" prefWidth="700.0" styleClass="item-card" stylesheets="@../css/Style.css">
-               <children>
-                  <Pane prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #e67e22; -fx-background-radius: 20 20 0 0;">
-                     <children>
-                        <Label layoutX="35.0" layoutY="21.0" text="My Order" textFill="WHITE">
-                           <font>
-                              <Font name="Open Sans Semibold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="orderTotalPrice" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="562.0" layoutY="48.0" prefHeight="46.0" prefWidth="109.0" text="0 đ" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="orderTotalPrice1" contentDisplay="CENTER" layoutX="509.0" layoutY="48.0" prefHeight="46.0" prefWidth="53.0" text="Total:" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="660.0" layoutY="11.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#closeMyOrderPaneButton" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <FontAwesomeIcon iconName="TIMES" size="20" />
-                           </graphic>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <ScrollPane fx:id="orderScroll" hbarPolicy="NEVER" layoutY="114.0" maxHeight="465.0" prefWidth="700.0" style="-fx-background-color: white;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <content>
-                        <GridPane fx:id="orderGrid" alignment="TOP_CENTER" minHeight="0.0" minWidth="700.0" prefWidth="700.0" style="-fx-background-color: white;">
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
-                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="520.0" layoutY="588.0" onAction="#setMakeOrderButton" prefHeight="35.0" prefWidth="131.0" style="-fx-background-color: #FF8C00;" text="Make order" textFill="WHITE">
-                     <font>
-                        <Font name="Open Sans Semibold" size="15.0" />
-                     </font>
-                  </JFXButton>
-                  <VBox fx:id="noOrderToDisplayPane" alignment="CENTER" layoutY="114.0" prefHeight="509.0" prefWidth="700.0" style="-fx-background-color: white;">
-                     <children>
-                        <ImageView fitHeight="131.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/sad.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Label text="No item to display...">
-                           <font>
-                              <Font name="Open Sans" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
          </children>
       </Pane>
    </children>

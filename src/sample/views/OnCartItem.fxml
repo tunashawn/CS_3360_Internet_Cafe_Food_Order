@@ -11,17 +11,20 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: white; -fx-padding: 4; -fx-border-color: #e67e22; -fx-border-radius: 20 20 20 20;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <StackPane layoutX="14.0" layoutY="6.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
-         <children>
-            <ImageView fx:id="imgLabel" fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/haha.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0"
+            minWidth="-Infinity" prefHeight="130.0" prefWidth="650.0" styleClass="onMenuCard"
+            stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16">
+    <children>
+        <StackPane layoutX="14.0" layoutY="6.0"
+                   style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
+            <children>
+                <ImageView fx:id="imgLabel" fitHeight="107.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/haha.jpg"/>
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
       <HBox alignment="BOTTOM_LEFT" layoutX="150.0" prefHeight="63.0" prefWidth="264.0">
          <children>
             <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="58.0" prefWidth="246.0" styleClass="label-on-cart-item" text="Oolong Tea plus Mango bla" wrapText="true" />

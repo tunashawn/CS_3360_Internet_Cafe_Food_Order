@@ -11,11 +11,18 @@ import javafx.stage.StageStyle;
 import sample.controllers.LoginControl;
 import sample.controllers.MainFrameControl;
 
-public class InternetCafeFoodOrderApp extends Application {
+import java.text.DecimalFormat;
+
+public class Main extends Application {
     public static final String CURRENCY = "đ";
+    public static final DecimalFormat df = new DecimalFormat("#,###");
+
+    public static String formatMoney(int amount) {
+        return df.format(amount) + " " + CURRENCY;
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         LoginControl loginControl = new LoginControl();
         loginControl.showStage();

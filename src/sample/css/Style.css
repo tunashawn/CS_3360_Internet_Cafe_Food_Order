@@ -36,12 +36,21 @@
     -fx-font-weight: bold;
     -fx-font-size: 15;
 }
-.button-up-down{
+
+.button-up-down {
     -fx-background-color: #aaaaaa;
 
 }
 
-.label-cart{
+.label-cart {
     -fx-background-color: #ffd321;
     -fx-background-radius: 50 50 50 50;
+}
+
+.onMenuCard {
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-color: white;
+    -fx-padding: 4;
+    -fx-border-color: #e67e22;
+
 }

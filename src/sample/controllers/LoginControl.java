@@ -36,21 +36,16 @@ public class LoginControl {
 
 
     public LoginControl() {
-        // We received the first controller, now let's make it usable throughout this controller.
 
-        // Create the new stage
         thisStage = new Stage();
 
         // Load the FXML file
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/LoginFrame.fxml"));
 
-            // Set this class as the controller
             loader.setController(this);
 
-            // Load the scene
             thisStage.setScene(new Scene(loader.load()));
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +62,7 @@ public class LoginControl {
     private void initialize() {
         warningLabel.setVisible(false);
         // Set the action for the button that interact with MainFrame
-        closeButton.setOnAction(event -> setCloseButton());
+        closeButton.setOnAction(event -> thisStage.close());
         loginButton.setOnAction(event -> setLoginButton());
 
         // Press enter while typing username or password will login
@@ -88,14 +83,6 @@ public class LoginControl {
             }
         });
 
-    }
-
-
-
-
-    private void setCloseButton() {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
     }
 
     private void setLoginButton(){

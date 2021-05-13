@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" onMousePressed="#click" prefHeight="130.0" prefWidth="650.0" style="-fx-background-color: white; -fx-padding: 4; -fx-border-color: #e67e22; -fx-border-radius: 20 20 20 20;" styleClass="item-card" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="130.0" maxWidth="-Infinity" minHeight="130.0" minWidth="-Infinity" prefHeight="130.0" prefWidth="650.0" styleClass="onMenuCard" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane layoutX="14.0" layoutY="6.0" style="-fx-padding: 6; -fx-background-color: white; -fx-background-radius: 20;">
          <children>

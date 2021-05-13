@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 public class Users {
     private String username;
     private String password;
-    private double balance;
+    private int balance;
 
     public Users() {
         this.username = "";
@@ -29,11 +29,11 @@ public class Users {
         this.password = password;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 }

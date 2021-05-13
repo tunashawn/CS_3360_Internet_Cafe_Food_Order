@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="75.0" maxWidth="630.0" minHeight="75.0" minWidth="630.0"
+            prefHeight="75.0" prefWidth="630.0" styleClass="onMenuCard" stylesheets="@../css/Style.css"
+            xmlns="http://javafx.com/javafx/16">
+    <children>
+        <GridPane layoutX="37.0" layoutY="35.0" prefHeight="86.0" AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="130.0" prefWidth="130.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="120.0" prefWidth="120.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label fx:id="numberLabel" text="1">
+                            <font>
+                                <Font name="Open Sans" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" GridPane.columnIndex="1">
+                    <children>
+                        <Label fx:id="dateLabel" text="12:04 14/05/2021">
+                            <font>
+                                <Font name="Open Sans" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" GridPane.columnIndex="2">
+                    <children>
+                        <Label fx:id="quantityLabel" text="5 items">
+                            <font>
+                                <Font name="Open Sans" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" GridPane.columnIndex="3">
+                    <children>
+                        <Label fx:id="costLabel" text="121,000 đ">
+                            <font>
+                                <Font name="Open Sans" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" GridPane.columnIndex="4">
+                    <children>
+                        <Label fx:id="vewDetailsLabel" text="View Details" textFill="#3068ff">
+                            <font>
+                                <Font name="Open Sans" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
