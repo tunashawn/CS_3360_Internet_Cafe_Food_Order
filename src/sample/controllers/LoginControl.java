@@ -32,7 +32,7 @@ public class LoginControl {
     private Label warningLabel;
 
 
-    private Stage thisStage;
+    private final Stage thisStage;
 
 
     public LoginControl() {
@@ -69,6 +69,16 @@ public class LoginControl {
         // Set the action for the button that interact with MainFrame
         closeButton.setOnAction(event -> setCloseButton());
         loginButton.setOnAction(event -> setLoginButton());
+
+        // Press enter while typing username or password will login
+        usernameTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.ENTER)) {
+                    setLoginButton();
+                }
+            }
+        });
         passwordPF.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent ke) {

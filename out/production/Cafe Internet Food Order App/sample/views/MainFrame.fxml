@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -47,12 +48,10 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <JFXButton fx:id="closeButton" layoutX="1072.0" onAction="#handleCloseButtonAction" prefHeight="25.0" prefWidth="25.0">
-                           <graphic>
-                              <FontAwesomeIcon fill="#6f6f6f" iconName="TIMES" size="20" tabSize="0" />
-                           </graphic>
-                        </JFXButton>
                         <HBox alignment="CENTER" layoutX="1029.0" layoutY="17.0" prefHeight="25.0" prefWidth="25.0" styleClass="label-cart" stylesheets="@../css/Style.css">
                            <children>
                               <Label fx:id="numberOfItemOnCartLabel" alignment="CENTER" contentDisplay="CENTER" />
@@ -67,7 +66,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button layoutX="880.0" layoutY="28.0" mnemonicParsing="false" onAction="#setMyAccountButton" style="-fx-background-color: transparent;">
+                        <Button layoutX="863.0" layoutY="28.0" mnemonicParsing="false" onAction="#setMyAccountButton" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="48.0" fitWidth="48.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -75,14 +74,25 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <Button layoutX="938.0" layoutY="28.0" mnemonicParsing="false" onAction="#setOrderHistoryButton" style="-fx-background-color: transparent;">
+                        <Button layoutX="929.0" layoutY="29.0" mnemonicParsing="false" onAction="#setOrderHistoryButton" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="43.0" fitWidth="43.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/history.png" />
                                  </image>
                               </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="1070.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <FontAwesomeIcon fill="#6f6f6f" iconName="TIMES" size="20" tabSize="0" />
                            </graphic>
                         </Button>
                      </children>
@@ -128,12 +138,12 @@
                                  <children>
                                     <Label fx:id="usernameLabel" text="Username" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="15.0" />
+                                          <Font name="Open Sans Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="balanceLabel" text="120 minutes left" textFill="WHITE">
+                                    <Label fx:id="balanceLabel" text="100,000 đ" textFill="WHITE">
                                        <font>
-                                          <Font size="13.0" />
+                                          <Font name="Open Sans" size="14.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -152,8 +162,11 @@
                               <Insets left="25.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets top="60.0" />
+                              <Insets top="100.0" />
                            </VBox.margin>
+                           <opaqueInsets>
+                              <Insets top="70.0" />
+                           </opaqueInsets>
                         </Label>
                         <JFXButton fx:id="coffeeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setCoffeeButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Coffee">
                            <graphic>
@@ -241,8 +254,11 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets top="75.0" />
+                              <Insets top="160.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
                         </JFXButton>
                      </children>
                   </VBox>

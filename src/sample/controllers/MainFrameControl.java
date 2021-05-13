@@ -1,6 +1,7 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXScrollPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainFrameControl implements Initializable {
-    private final Stage thisStage;
+
     @FXML
     private Button closeButton;
     @FXML
@@ -75,20 +76,20 @@ public class MainFrameControl implements Initializable {
     private Label balanceLabel;
     @FXML
     private VBox noOrderToDisplayPane;
-
-
-
-    private final List<Orders> ordersList = new ArrayList<>();
-    private final List<Items> itemList = new ArrayList<>();
-    private final List<OnCartItems> onCartItemsList = new ArrayList<>();
     private MyListener myListener;
     private int selectedQuantity = 1;
     private Items selectedItem = new Items();
     private OnCartItems selectedOnCartItem;
 
+    private final Stage thisStage;
+    private final List<Orders> ordersList = new ArrayList<>();
+    private final List<Items> itemList = new ArrayList<>();
+    private final List<OnCartItems> onCartItemsList = new ArrayList<>();
+
     private Users user;
 
-    private  DecimalFormat df = new DecimalFormat("#,###");
+    private final DecimalFormat df = new DecimalFormat("#,###");
+    private final List<String> itemNameList = new ArrayList<>();
 
     public MainFrameControl() {
 
@@ -110,20 +111,6 @@ public class MainFrameControl implements Initializable {
         }
     }
 
-    /**
-     * Show the stage that was loaded in the constructor
-     */
-    public void showStage() {
-
-        thisStage.initStyle(StageStyle.UNDECORATED);
-        thisStage.show();
-    }
-    public void setUserData(Users user){
-        this.user = user;
-        usernameLabel.setText(user.getUsername());
-        balanceLabel.setText(df.format(user.getBalance()) + " " + "đ");
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -133,22 +120,9 @@ public class MainFrameControl implements Initializable {
         numberOfItemOnCartLabel.setText("0");
     }
 
-    public void deleteSelectedItemOnCart(OnCartItems item) {
-        removeItemFromCart(item);
-        refreshOrderTotalPrice();
-        populateMyOrder();
-    }
 
 
-    public void setNumberOfItemOnCartLabel(){
-        int numberOfAllItem = 0;
-        if (onCartItemsList.size() > 0){
-            for (OnCartItems i : onCartItemsList) {
-                numberOfAllItem += i.getQuantity();
-            }
-        }
-        numberOfItemOnCartLabel.setText(String.valueOf(numberOfAllItem));
-    }
+
 
 
     /**
@@ -282,9 +256,6 @@ public class MainFrameControl implements Initializable {
         setNoOrderToDisplayPane();
     }
 
-
-
-
     /**
      * CLOSE BUTTON
      *
@@ -306,6 +277,57 @@ public class MainFrameControl implements Initializable {
         refreshOrderTotalPrice();
     }
 
+    @FXML
+    private void setLogOutButton(ActionEvent event) {
+        thisStage.close();
+        LoginControl loginControl = new LoginControl();
+        loginControl.showStage();
+
+    }
+
+    @FXML
+    private void setMyAccountButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void setOrderHistoryButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void setMakeOrderButton(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Purchase confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Confirm purchase?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            Orders newOrder = new Orders(LocalDateTime.now(), "Hanoi", onCartItemsList, user.getUsername());
+            System.out.println(newOrder);
+        }
+    }
+
+    /**
+     * Show the stage that was loaded in the constructor
+     */
+    public void showStage() {
+
+        thisStage.initStyle(StageStyle.UNDECORATED);
+        thisStage.show();
+    }
+
+    public void deleteSelectedItemOnCart(OnCartItems item) {
+        removeItemFromCart(item);
+        refreshOrderTotalPrice();
+        populateMyOrder();
+    }
+
+    public void setUserData(Users user) {
+        this.user = user;
+        usernameLabel.setText(user.getUsername());
+        balanceLabel.setText(df.format(user.getBalance()) + " " + "đ");
+    }
 
     /**
      * Set the choosen item on menu
@@ -427,6 +449,27 @@ public class MainFrameControl implements Initializable {
         selectedOnCartItem = item;
     }
 
+    public void setNumberOfItemOnCartLabel() {
+        int numberOfAllItem = 0;
+        if (onCartItemsList.size() > 0) {
+            for (OnCartItems i : onCartItemsList) {
+                numberOfAllItem += i.getQuantity();
+            }
+        }
+        numberOfItemOnCartLabel.setText(String.valueOf(numberOfAllItem));
+    }
+
+    public void setNoOrderToDisplayPane() {
+        noOrderToDisplayPane.setVisible(onCartItemsList.size() <= 0);
+    }
+
+    public void setQuantityForItem(OnCartItems item, int quantity) {
+        int index = itemNameList.indexOf(item.getName());
+        onCartItemsList.get(index).setQuantity(quantity);
+    }
+
+    // Accessing on cart items methods
+
     public void refreshOrderTotalPrice() {
         double totalPrice = 0;
         for (OnCartItems onCartItems : onCartItemsList) {
@@ -434,17 +477,6 @@ public class MainFrameControl implements Initializable {
         }
         orderTotalPrice.setText(df.format(totalPrice) + " " + InternetCafeFoodOrderApp.CURRENCY);
     }
-
-
-
-
-
-
-
-
-    // Accessing on cart items methods
-
-    private List<String> itemNameList = new ArrayList<>();
 
     public void addItemToCart(OnCartItems onCartItem) {
         onCartItemsList.add(onCartItem);
@@ -461,45 +493,9 @@ public class MainFrameControl implements Initializable {
     }
 
 
-    public void setQuantityForItem(OnCartItems item, int quantity){
-        int index = itemNameList.indexOf(item.getName());
-        onCartItemsList.get(index).setQuantity(quantity);
-    }
 
 
-    @FXML
-    private void setLogOutButton(ActionEvent event){
-        thisStage.close();
-        LoginControl loginControl = new LoginControl();
-        loginControl.showStage();
 
-    }
 
-    @FXML
-    private void setMyAccountButton(ActionEvent event){
 
-    }
-    @FXML
-    private void setOrderHistoryButton(ActionEvent event){
-
-    }
-    @FXML
-    private void setMakeOrderButton(ActionEvent event){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Purchase confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("Confirm purchase?");
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK){
-            Orders newOrder = new Orders(LocalDateTime.now(), "Hanoi", onCartItemsList, user.getUsername());
-            System.out.println(newOrder);
-        }
-    }
-    public void setNoOrderToDisplayPane(){
-        if (onCartItemsList.size() > 0){
-            noOrderToDisplayPane.setVisible(false);
-        } else {
-            noOrderToDisplayPane.setVisible(true);
-        }
-    }
 }

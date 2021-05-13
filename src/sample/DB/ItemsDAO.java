@@ -87,6 +87,7 @@ public class ItemsDAO implements DAO{
         return false;
     }
 
+
     public static Users getUserInfo(String username, String password){
         String sql = "SELECT * FROM menudata.users order by username";
         Users databaseUser = new Users();
