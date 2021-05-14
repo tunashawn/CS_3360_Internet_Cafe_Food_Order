@@ -1,6 +1,7 @@
 package sample.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Orders {
@@ -15,7 +16,7 @@ public class Orders {
         this.orderNumber = orderNumber;
         this.username = username;
         this.dateTime = dateTime;
-        this.itemsList = itemsList;
+        this.itemsList = new ArrayList<>(itemsList);
         this.quantity = quantity;
         this.cost = cost;
     }
@@ -42,5 +43,17 @@ public class Orders {
 
     public int getCost() {
         return cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderNumber=" + orderNumber +
+                ", username='" + username + '\'' +
+                ", dateTime=" + dateTime +
+                ", itemsList=" + itemsList +
+                ", quantity=" + quantity +
+                ", cost=" + cost +
+                '}';
     }
 }

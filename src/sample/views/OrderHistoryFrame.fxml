@@ -11,7 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxWidth="850.0" minWidth="850.0" prefHeight="700.0" prefWidth="850.0"
@@ -108,5 +112,28 @@
         </GridPane>
         <Line endX="620.0" layoutX="165.0" layoutY="118.0" startX="-100.0"/>
         <Line endX="620.0" layoutX="165.0" layoutY="166.0" startX="-100.0"/>
+        <Rectangle fx:id="regionPane" height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="850.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color opacity="0.5986956357955933"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="0.9961685823754789">
+                            <color>
+                                <Color opacity="0.37391307950019836"/>
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color opacity="0.37391307950019836"/>
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
     </children>
 </AnchorPane>

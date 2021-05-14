@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.models.Orders;
@@ -24,6 +25,9 @@ public class OrderHistoryControl {
     private GridPane grid;
     @FXML
     private Button closeButton;
+    @FXML
+    private Rectangle regionPane;
+
     private final MainFrameControl mainFrameControl;
 
     public OrderHistoryControl(MainFrameControl mainFrameControl) {
@@ -50,6 +54,7 @@ public class OrderHistoryControl {
 
     @FXML
     private void initialize() {
+        hideRegionPane();
         // Set the action for the button that interact with MainFrame
         closeButton.setOnAction(event -> {
             mainFrameControl.hideRegionPane();
@@ -75,7 +80,7 @@ public class OrderHistoryControl {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/sample/views/OrderHistoryItem.fxml"));
 
-                    HistoryItemControl historyItemControl = new HistoryItemControl();
+                    HistoryItemControl historyItemControl = new HistoryItemControl(this);
                     fxmlLoader.setController(historyItemControl);
                     AnchorPane pane = fxmlLoader.load();
                     historyItemControl.setData(order);
@@ -92,5 +97,14 @@ public class OrderHistoryControl {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public void showRegionPane() {
+        regionPane.setVisible(true);
+    }
+
+    public void hideRegionPane() {
+        regionPane.setVisible(false);
     }
 }

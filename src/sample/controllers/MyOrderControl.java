@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.main.Main;
@@ -40,6 +41,8 @@ public class MyOrderControl {
     private Button closeButton;
     @FXML
     private Label totalPriceLabel;
+
+
     private List<OnCartItems> onCartItemsList;
     private List<String> itemNameList = new ArrayList<>();
     private String username;
@@ -203,4 +206,6 @@ public class MyOrderControl {
             totalPriceLabel.setText("0 đ");
         }
     }
+
+
 }

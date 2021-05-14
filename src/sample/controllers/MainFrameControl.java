@@ -203,6 +203,9 @@ public class MainFrameControl implements Initializable {
      */
     @FXML
     private void setOrderHistoryButton(ActionEvent event) {
+
+        ordersList.forEach(System.out::println);
+
         OrderHistoryControl orderHistoryControl = new OrderHistoryControl(this);
         orderHistoryControl.setData(ordersList);
         orderHistoryControl.showStage();
@@ -317,5 +320,13 @@ public class MainFrameControl implements Initializable {
         onCartItemsList.add(newItem);
         itemNameList.add(newItem.getName());
         setNumberOfItemOnCartLabel();
+    }
+
+    public int getUserBalance() {
+        return user.getBalance();
+    }
+
+    public void setUserPurchasedAmount(int amount) {
+        user.setBalance(user.getBalance() - amount);
     }
 }

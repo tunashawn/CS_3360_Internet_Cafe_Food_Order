@@ -3,6 +3,7 @@ package sample.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.models.Orders;
@@ -21,12 +22,13 @@ public class HistoryItemControl {
     private Label quantityLabel;
     @FXML
     private Label costLabel;
-    @FXML
-    private Label viewDetailsLabel;
+    private final OrderHistoryControl orderHistoryControl;
     private Orders order;
+    @FXML
+    private Button viewDetails;
 
-    public HistoryItemControl() {
-
+    public HistoryItemControl(OrderHistoryControl orderHistoryControl) {
+        this.orderHistoryControl = orderHistoryControl;
         thisStage = new Stage();
 
         // Load the FXML file
@@ -44,8 +46,9 @@ public class HistoryItemControl {
         }
     }
 
-    public void showStage() {
-        thisStage.showAndWait();
+    @FXML
+    private void initialize() {
+        viewDetails.setOnAction(event -> setViewDetailsLabel());
     }
 
     public void setData(Orders order) {
@@ -57,5 +60,12 @@ public class HistoryItemControl {
         costLabel.setText(String.valueOf(order.getCost()));
     }
 
+    private void setViewDetailsLabel() {
+        orderHistoryControl.showRegionPane();
+        System.out.println("view detail:\n" + order);
+        OrderHistoryDetailControl orderHistoryDetailControl = new OrderHistoryDetailControl(orderHistoryControl);
+        orderHistoryDetailControl.setData(order);
+        orderHistoryDetailControl.showStage();
+    }
 
 }

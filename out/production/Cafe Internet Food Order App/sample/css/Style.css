@@ -1,21 +1,22 @@
-.heading-pane{
-    -fx-background-color:  #F37C16;
+.heading-pane {
+    -fx-background-color: #F37C16;
 }
 
-.heading-label{
+.heading-label {
     -fx-text-fill: white;
     -fx-font-size: 30;
 }
 
-.item-card{
+.item-card {
     -fx-background-color: white;
     -fx-background-radius: 20;
 }
-.item-card1{
+
+.item-card1 {
     -fx-background-radius: 20 20 0 0;
 }
 
-.scroll-pane{
+.scroll-pane {
     -fx-background-color: #fcfcfc;
 }
 
@@ -31,14 +32,14 @@
     -fx-font-size: 20;
 }
 
-.button-add{
+.button-add {
     -fx-background-color: #27ae60;
     -fx-background-radius: 0 0 0 0;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 15;
 }
-.button-cancel{
+.button-cancel {
     -fx-background-color: #e74c3c;
     -fx-background-radius: 0 0 0 0;
     -fx-text-fill: white;
