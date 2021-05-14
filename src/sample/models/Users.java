@@ -1,16 +1,18 @@
 package sample.models;
 
-import javafx.scene.image.Image;
-
 public class Users {
     private String username;
     private String password;
+    private String phoneNumber;
+    private String email;
     private int balance;
 
     public Users() {
         this.username = "";
         this.password = "";
         this.balance = 0;
+        this.phoneNumber = "";
+        this.email = "";
     }
 
     public String getUsername() {
@@ -35,5 +37,21 @@ public class Users {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

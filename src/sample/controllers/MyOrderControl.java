@@ -1,7 +1,6 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
-import com.mysql.cj.ParseInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -10,20 +9,19 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.DB.ItemsDAO;
 import sample.main.Main;
 import sample.models.OnCartItems;
 import sample.models.Orders;
+import sample.models.Users;
 
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class MyOrderControl {
 
@@ -45,7 +43,7 @@ public class MyOrderControl {
 
     private List<OnCartItems> onCartItemsList;
     private List<String> itemNameList = new ArrayList<>();
-    private String username;
+    private Users user;
 
     public MyOrderControl(MainFrameControl mainFrameControl) {
         this.mainFrameControl = mainFrameControl;
@@ -96,12 +94,12 @@ public class MyOrderControl {
         populateMyOrder();
     }
 
-    public void setData(List<OnCartItems> onCartItemsList, List<String> itemNameList, String username) {
+    public void setData(List<OnCartItems> onCartItemsList, List<String> itemNameList, Users user) {
         this.onCartItemsList = new ArrayList<>();
         if (onCartItemsList.size() > 0) {
             this.onCartItemsList = onCartItemsList;
             this.itemNameList = itemNameList;
-            this.username = username;
+            this.user = user;
 
             updateTotalPrice();
             populateMyOrder();
@@ -114,36 +112,48 @@ public class MyOrderControl {
 
 
     private void makeOrder() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Purchase confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("Confirm purchase?");
-        Optional<ButtonType> result = alert.showAndWait();
-
-        int quantity = 0;
         int totalCost = 0;
-        for (OnCartItems item : onCartItemsList) {
-            quantity += item.getQuantity();
-            totalCost += item.getQuantity() * item.getPrice();
+        for (OnCartItems i : onCartItemsList) {
+            totalCost += i.getQuantity() * i.getPrice();
         }
+        if (mainFrameControl.getUserBalance() > totalCost) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Purchase confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Confirm purchase?");
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.get() == ButtonType.OK) {
-            Orders newOrder = new Orders(
-                    1,
-                    this.username,
-                    LocalDateTime.now(),
-                    onCartItemsList,
-                    quantity,
-                    totalCost
-            );
-            // Add new order to order list
-            mainFrameControl.addOrders(newOrder);
-            // Clear on shopping cart items list
-            onCartItemsList.clear();
-            itemNameList.clear();
+            int quantity = 0;
+            for (OnCartItems i : onCartItemsList) {
+                quantity += i.getQuantity();
+            }
+            if (result.get() == ButtonType.OK) {
+                Orders newOrder = new Orders(
+                        1,
+                        this.user.getUsername(),
+                        LocalDateTime.now(),
+                        onCartItemsList,
+                        quantity,
+                        totalCost
+                );
+                // Add new order to order list
+                mainFrameControl.addOrders(newOrder);
+                // Clear on shopping cart items list
+                onCartItemsList.clear();
+                itemNameList.clear();
 
-            mainFrameControl.hideRegionPane();
-            closeStage();
+                mainFrameControl.updateBalance(totalCost);
+                mainFrameControl.hideRegionPane();
+                // Update User Info on database
+                ItemsDAO.updateUserInfo(user);
+
+                closeStage();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("PURCHASE ERROR!");
+            alert.setContentText("Your balance is not enough to purchase items!");
+            alert.show();
         }
     }
 

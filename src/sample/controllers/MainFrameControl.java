@@ -39,8 +39,6 @@ public class MainFrameControl implements Initializable {
     @FXML
     private Button closeButton;
     @FXML
-    private JFXButton coffeeButton;
-    @FXML
     private Label numberOfItemOnCartLabel;
     @FXML
     private GridPane grid;
@@ -60,6 +58,11 @@ public class MainFrameControl implements Initializable {
     private Label balanceLabel;
     @FXML
     private Rectangle regionPane;
+    @FXML
+    private JFXButton coffeeButton, energyDrinkButton, beverageButton, banhmiButton, snackButton;
+    @FXML
+    private Button userInfoButton;
+
     private MyListener myListener;
     private int selectedQuantity = 1;
     private Items selectedItem = new Items();
@@ -89,67 +92,55 @@ public class MainFrameControl implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        setCoffeeButton();
         hideRegionPane();
         numberOfItemOnCartLabel.setText("0");
+
+
+        coffeeButton.setOnAction(event -> setCoffeeButton());
+        energyDrinkButton.setOnAction(event -> setEnergyDrinkButton());
+        beverageButton.setOnAction(event -> setBeverageButton());
+        banhmiButton.setOnAction(event -> setBanhMiButton());
+        snackButton.setOnAction(event -> setSnackButton());
+
+        userInfoButton.setOnAction(event -> openUserInfoPane());
     }
 
 
-    /**
-     * COFFEE BUTTON
-     *
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    private void setCoffeeButton(ActionEvent event) throws IOException {
+    private void setCoffeeButton() {
         populateMenu("cafe");
         selectedTabName.setText("Coffee");
     }
 
-    /**
-     * ENERGY DRINK BUTTON
-     *
-     * @param event
-     */
-    @FXML
-    private void setEnergyDrinkButton(ActionEvent event) {
+
+    private void setEnergyDrinkButton() {
         populateMenu("energy_drinks");
         selectedTabName.setText("Energy Drink");
     }
 
-    /**
-     * BEVERAGES BUTTON
-     *
-     * @param event
-     */
-    @FXML
-    private void setBeverageButton(ActionEvent event) {
+
+    private void setBeverageButton() {
         populateMenu("beverages");
         selectedTabName.setText("Beverage");
     }
 
-    /**
-     * BANH MI BUTTON
-     *
-     * @param event
-     */
-    @FXML
-    private void setBanhMiButton(ActionEvent event) {
+
+    private void setBanhMiButton() {
         populateMenu("banhmi");
         selectedTabName.setText("Banh Mi");
     }
 
-    /**
-     * SAVOURY BUTTON
-     *
-     * @param event
-     */
-    @FXML
-    private void setSnackButton(ActionEvent event) {
+
+    private void setSnackButton() {
         populateMenu("snack");
         selectedTabName.setText("Snack");
     }
 
+    private void openUserInfoPane() {
+        UserInfoControl userInfoControl = new UserInfoControl(this);
+        userInfoControl.setData(user);
+        userInfoControl.showStage();
+    }
 
     /**
      * SHOPPING CART BUTTON
@@ -160,7 +151,7 @@ public class MainFrameControl implements Initializable {
     private void setShoppingCartButton(ActionEvent event) {
         MyOrderControl myOrderControl = new MyOrderControl(this);
 
-        myOrderControl.setData(onCartItemsList, itemNameList, user.getUsername());
+        myOrderControl.setData(onCartItemsList, itemNameList, this.user);
 
         myOrderControl.showStage();
     }
@@ -326,7 +317,8 @@ public class MainFrameControl implements Initializable {
         return user.getBalance();
     }
 
-    public void setUserPurchasedAmount(int amount) {
+    public void updateBalance(int amount) {
         user.setBalance(user.getBalance() - amount);
+        balanceLabel.setText(Main.formatMoney(user.getBalance()));
     }
 }

@@ -67,8 +67,8 @@
                               </Label>
                            </children>
                         </HBox>
-                         <Button layoutX="863.0" layoutY="28.0" mnemonicParsing="false" onAction="#setMyAccountButton"
-                                 style="-fx-background-color: transparent;">
+                         <Button fx:id="userInfoButton" layoutX="863.0" layoutY="28.0" mnemonicParsing="false"
+                                 onAction="#setMyAccountButton" style="-fx-background-color: transparent;">
                              <graphic>
                                  <ImageView fitHeight="48.0" fitWidth="48.0" nodeOrientation="INHERIT"
                                             pickOnBounds="true" preserveRatio="true">
@@ -177,44 +177,56 @@
                                  <Insets top="70.0"/>
                              </opaqueInsets>
                          </Label>
-                        <JFXButton fx:id="coffeeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setCoffeeButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Coffee">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/coffee.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                           <JFXButton fx:id="coffeeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
+                                      maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
+                                      prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
+                                      text="Coffee">
+                               <graphic>
+                                   <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
+                                              pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@../img/coffee.png"/>
+                                       </image>
+                                   </ImageView>
+                               </graphic>
+                               <padding>
+                                   <Insets left="45.0"/>
+                               </padding>
+                        </JFXButton>
+                           <JFXButton fx:id="energyDrinkButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
+                                      maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
+                                      prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
+                                      text="Energy Drink">
+                               <graphic>
+                                   <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
+                                              pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@../img/enegerydrink.png"/>
+                                       </image>
+                                   </ImageView>
+                               </graphic>
+                               <opaqueInsets>
+                                   <Insets/>
+                               </opaqueInsets>
                            <padding>
                               <Insets left="45.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setEnergyDrinkButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Energy Drink">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/enegerydrink.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setBeverageButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Beverage">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/juice.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                           <JFXButton fx:id="beverageButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
+                                      maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
+                                      prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
+                                      text="Beverage">
+                               <graphic>
+                                   <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
+                                              pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@../img/juice.png"/>
+                                       </image>
+                                   </ImageView>
+                               </graphic>
+                               <opaqueInsets>
+                                   <Insets/>
+                               </opaqueInsets>
                            <padding>
                               <Insets left="45.0" />
                            </padding>
@@ -230,29 +242,35 @@
                               <Insets />
                            </VBox.margin>
                         </Label>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setBanhMiButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Banh Mi">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/fastfood.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
+                           <JFXButton fx:id="banhmiButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
+                                      minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0"
+                                      prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Banh Mi">
+                               <graphic>
+                                   <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
+                                              pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@../img/fastfood.png"/>
+                                       </image>
+                                   </ImageView>
+                               </graphic>
+                               <padding>
+                                   <Insets left="45.0"/>
+                               </padding>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setSnackButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Snack">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/snack.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
+                           <JFXButton fx:id="snackButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
+                                      minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0"
+                                      prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Snack">
+                               <graphic>
+                                   <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
+                                              pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                           <Image url="@../img/snack.png"/>
+                                       </image>
+                                   </ImageView>
+                               </graphic>
+                               <padding>
+                                   <Insets left="45.0"/>
+                               </padding>
                         </JFXButton>
                         <JFXButton alignment="CENTER" graphicTextGap="10.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#setLogOutButton" prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Log out">
                             <graphic>

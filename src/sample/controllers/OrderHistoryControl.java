@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OrderHistoryControl {
 
     private final Stage thisStage;
+    private final MainFrameControl mainFrameControl;
     @FXML
     private ScrollPane scroll;
     @FXML
@@ -27,8 +29,8 @@ public class OrderHistoryControl {
     private Button closeButton;
     @FXML
     private Rectangle regionPane;
-
-    private final MainFrameControl mainFrameControl;
+    @FXML
+    private Pane noOrderPane;
 
     public OrderHistoryControl(MainFrameControl mainFrameControl) {
         this.mainFrameControl = mainFrameControl;
@@ -54,6 +56,7 @@ public class OrderHistoryControl {
 
     @FXML
     private void initialize() {
+        noOrderPane.setVisible(false);
         hideRegionPane();
         // Set the action for the button that interact with MainFrame
         closeButton.setOnAction(event -> {
@@ -80,10 +83,10 @@ public class OrderHistoryControl {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("/sample/views/OrderHistoryItem.fxml"));
 
-                    HistoryItemControl historyItemControl = new HistoryItemControl(this);
-                    fxmlLoader.setController(historyItemControl);
+                    OrderHistoryItemControl orderHistoryItemControl = new OrderHistoryItemControl(this);
+                    fxmlLoader.setController(orderHistoryItemControl);
                     AnchorPane pane = fxmlLoader.load();
-                    historyItemControl.setData(order);
+                    orderHistoryItemControl.setData(order);
 
                     if (column == 1) {
                         column = 0;
@@ -96,6 +99,8 @@ public class OrderHistoryControl {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            noOrderPane.setVisible(true);
         }
     }
 

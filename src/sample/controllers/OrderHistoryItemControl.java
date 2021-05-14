@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 
-public class HistoryItemControl {
+public class OrderHistoryItemControl {
     private final Stage thisStage;
+    private final OrderHistoryControl orderHistoryControl;
     @FXML
     private Label numberLabel;
     @FXML
@@ -22,12 +23,11 @@ public class HistoryItemControl {
     private Label quantityLabel;
     @FXML
     private Label costLabel;
-    private final OrderHistoryControl orderHistoryControl;
     private Orders order;
     @FXML
     private Button viewDetails;
 
-    public HistoryItemControl(OrderHistoryControl orderHistoryControl) {
+    public OrderHistoryItemControl(OrderHistoryControl orderHistoryControl) {
         this.orderHistoryControl = orderHistoryControl;
         thisStage = new Stage();
 

@@ -25,8 +25,7 @@
         <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FCD757;"
-              styleClass="item-card1">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FBB100;">
             <children>
                 <Label fx:id="name" text="Hot Latte">
                     <font>

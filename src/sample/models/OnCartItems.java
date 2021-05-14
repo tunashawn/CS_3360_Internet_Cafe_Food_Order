@@ -1,8 +1,9 @@
 package sample.models;
 
-public class OnCartItems extends Items{
+public class OnCartItems extends Items {
     private int quantity;
     private int subTotal;
+
     public OnCartItems(Items selectedItem) {
         setName(selectedItem.getName());
         setPrice(selectedItem.getPrice());

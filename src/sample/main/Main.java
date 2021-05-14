@@ -14,6 +14,7 @@ import sample.controllers.MainFrameControl;
 import java.text.DecimalFormat;
 
 public class Main extends Application {
+    public static final int passwordLength = 4;
     public static final String CURRENCY = "đ";
     public static final DecimalFormat df = new DecimalFormat("#,###");
 

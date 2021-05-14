@@ -2,8 +2,6 @@ package sample.models;
 
 import javafx.scene.image.Image;
 
-import java.io.InputStream;
-
 public class Items {
     private String name;
     private int price;
