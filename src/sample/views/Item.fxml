@@ -35,17 +35,18 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox alignment="CENTER" style="-fx-background-color: #FCD757;" styleClass="item-card1">
-               <children>
-                  <HBox alignment="BOTTOM_CENTER">
-                     <children>
-                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0" text="Monster Energy Zero Sugar" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font name="Open Sans Semibold" size="15.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="8.0" />
-                           </HBox.margin>
+            <VBox alignment="CENTER" style="-fx-background-color: #FBB100;" styleClass="item-card1">
+                <children>
+                    <HBox alignment="BOTTOM_CENTER">
+                        <children>
+                            <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0"
+                                   text="Monster Energy Zero Sugar" textAlignment="CENTER" wrapText="true">
+                                <font>
+                                    <Font name="Open Sans Semibold" size="15.0"/>
+                                </font>
+                                <HBox.margin>
+                                    <Insets top="8.0"/>
+                                </HBox.margin>
                         </Label>
                      </children>
                   </HBox>

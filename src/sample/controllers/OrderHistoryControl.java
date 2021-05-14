@@ -1,6 +1,5 @@
 package sample.controllers;
 
-import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -9,11 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sample.main.MyListener;
-import sample.models.OnCartItems;
 import sample.models.Orders;
 
 import java.io.IOException;
@@ -21,16 +17,17 @@ import java.util.List;
 
 public class OrderHistoryControl {
 
+    private final Stage thisStage;
     @FXML
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
     @FXML
     private Button closeButton;
+    private final MainFrameControl mainFrameControl;
 
-    private final Stage thisStage;
-
-    public OrderHistoryControl() {
+    public OrderHistoryControl(MainFrameControl mainFrameControl) {
+        this.mainFrameControl = mainFrameControl;
         thisStage = new Stage();
 
         // Load the FXML file
@@ -46,6 +43,7 @@ public class OrderHistoryControl {
     }
 
     public void showStage() {
+        mainFrameControl.showRegionPane();
         thisStage.initStyle(StageStyle.UNDECORATED);
         thisStage.showAndWait();
     }
@@ -53,7 +51,10 @@ public class OrderHistoryControl {
     @FXML
     private void initialize() {
         // Set the action for the button that interact with MainFrame
-        closeButton.setOnAction(event -> thisStage.close());
+        closeButton.setOnAction(event -> {
+            mainFrameControl.hideRegionPane();
+            thisStage.close();
+        });
     }
 
     public void setData(List<Orders> ordersList) {
@@ -72,7 +73,7 @@ public class OrderHistoryControl {
             try {
                 for (Orders order : ordersList) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/sample/views/HistoryItem.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/sample/views/OrderHistoryItem.fxml"));
 
                     HistoryItemControl historyItemControl = new HistoryItemControl();
                     fxmlLoader.setController(historyItemControl);

@@ -7,9 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.DB.ItemsDAO;
@@ -29,32 +33,19 @@ import java.util.ResourceBundle;
 @SuppressWarnings("ALL")
 public class MainFrameControl implements Initializable {
 
+    private final Stage thisStage;
+    private final List<Orders> ordersList = new ArrayList<>();
+    private final List<Items> itemList = new ArrayList<>();
     @FXML
     private Button closeButton;
     @FXML
     private JFXButton coffeeButton;
-    @FXML
-    private BorderPane mainBorderPane;
     @FXML
     private Label numberOfItemOnCartLabel;
     @FXML
     private GridPane grid;
     @FXML
     private ScrollPane scroll;
-    @FXML
-    private Pane selectQuantityPane;
-    @FXML
-    private Label selectedName;
-    @FXML
-    private Label selectedPrice;
-    @FXML
-    private ImageView selectedImg;
-    @FXML
-    private TextField quantityTextField;
-    @FXML
-    private JFXButton addButton;
-    @FXML
-    private JFXButton cancelButton;
     @FXML
     private ImageView cartIcon;
     @FXML
@@ -64,23 +55,15 @@ public class MainFrameControl implements Initializable {
     @FXML
     private ScrollPane orderScroll;
     @FXML
-    private Pane myOrderPane;
-    @FXML
-    private Label orderTotalPrice;
-    @FXML
     private Label usernameLabel;
     @FXML
     private Label balanceLabel;
     @FXML
-    private VBox noOrderToDisplayPane;
+    private Rectangle regionPane;
     private MyListener myListener;
     private int selectedQuantity = 1;
     private Items selectedItem = new Items();
     private OnCartItems selectedOnCartItem;
-
-    private final Stage thisStage;
-    private final List<Orders> ordersList = new ArrayList<>();
-    private final List<Items> itemList = new ArrayList<>();
     private List<OnCartItems> onCartItemsList = new ArrayList<>();
 
     private Users user;
@@ -90,17 +73,14 @@ public class MainFrameControl implements Initializable {
 
     public MainFrameControl() {
 
-        // Create the new stage
         thisStage = new Stage();
 
         // Load the FXML file
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/MainFrame.fxml"));
 
-            // Set this class as the controller
             loader.setController(this);
 
-            // Load the scene
             thisStage.setScene(new Scene(loader.load()));
 
         } catch (IOException e) {
@@ -109,8 +89,7 @@ public class MainFrameControl implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-
-        selectQuantityPane.setVisible(false);
+        hideRegionPane();
         numberOfItemOnCartLabel.setText("0");
     }
 
@@ -171,69 +150,6 @@ public class MainFrameControl implements Initializable {
         selectedTabName.setText("Snack");
     }
 
-    /**
-     * PLUS BUTTON
-     * Increase quantity of selected item by 1
-     *
-     * @param event
-     */
-    @FXML
-    private void setPlusButton(ActionEvent event) {
-        selectedQuantity++;
-        System.out.println(selectedQuantity);
-        quantityTextField.setText(String.valueOf(selectedQuantity));
-    }
-
-    /**
-     * MINUS BUTTON
-     * Decrease quantity of the selected item by 1
-     *
-     * @param event
-     */
-    @FXML
-    private void setMinusButton(ActionEvent event) {
-        if (selectedQuantity - 1 > 0) {
-            selectedQuantity--;
-            quantityTextField.setText(String.valueOf(selectedQuantity));
-        }
-    }
-
-    /**
-     * ADD BUTTON
-     * Add selected item to the shopping cart
-     *
-     * @param event
-     */
-    @FXML
-    private void setAddButton(ActionEvent event) {
-        // Create new item to put on cart
-        OnCartItems newItem = new OnCartItems(selectedItem);
-        // Set the quantity of new item
-        newItem.setQuantity(selectedQuantity);
-        // Add new item to list of items on shopping cart if it is not in the list yet
-        if (isCartContains(newItem)) {
-            System.out.println(selectedItem + " is already exist in your cart");
-        } else {
-            onCartItemsList.add(newItem);
-            itemNameList.add(newItem.getName());
-        }
-
-        // Then hide the selecting quantity panel
-        selectQuantityPane.setVisible(false);
-        setNumberOfItemOnCartLabel();
-    }
-
-    /**
-     * CANCEL BUTTON
-     * Hide the selecting quantity panel
-     *
-     * @param event
-     */
-    @FXML
-    private void setCancelButton(ActionEvent event) {
-        selectQuantityPane.setVisible(false);
-        selectedQuantity = 1;
-    }
 
     /**
      * SHOPPING CART BUTTON
@@ -287,7 +203,7 @@ public class MainFrameControl implements Initializable {
      */
     @FXML
     private void setOrderHistoryButton(ActionEvent event) {
-        OrderHistoryControl orderHistoryControl = new OrderHistoryControl();
+        OrderHistoryControl orderHistoryControl = new OrderHistoryControl(this);
         orderHistoryControl.setData(ordersList);
         orderHistoryControl.showStage();
 
@@ -295,29 +211,16 @@ public class MainFrameControl implements Initializable {
 
 
     /**
-     * Set the choosen item on menu
+     * Open selecting quantity for the selected item
      *
      * @param item
      */
-    private void setChosenItem(Items item) {
-        selectQuantityPane.setVisible(true);
-        populateSelectQuantityPane(item);
-        // Set the choosen item
-        selectedItem = item;
+    private void openSelectedItem(Items item) {
+        SelectQuantityControl selectQuantityControl = new SelectQuantityControl(this);
+        selectQuantityControl.setData(item);
+        selectQuantityControl.showStage();
     }
 
-    /**
-     * Populate menu with items
-     *
-     * @param item
-     */
-    private void populateSelectQuantityPane(Items item) {
-        this.selectedName.setText(item.getName());
-        this.selectedPrice.setText(Main.df.format(item.getPrice()) + " " + Main.CURRENCY);
-        this.selectedImg.setImage(item.getImgSrc());
-        this.quantityTextField.setText("1");
-        this.selectedQuantity = 1;
-    }
 
     /**
      * Populate GridPane with items of type
@@ -335,7 +238,7 @@ public class MainFrameControl implements Initializable {
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Items item) throws IOException {
-                    setChosenItem(item);
+                    openSelectedItem(item);
                 }
 
             };
@@ -374,7 +277,7 @@ public class MainFrameControl implements Initializable {
         numberOfItemOnCartLabel.setText(String.valueOf(numberOfAllItem));
     }
 
-    private boolean isCartContains(OnCartItems onCartItem) {
+    public boolean isCartContains(OnCartItems onCartItem) {
         return itemNameList.contains(onCartItem.getName());
     }
 
@@ -402,4 +305,17 @@ public class MainFrameControl implements Initializable {
         ordersList.add(newOrder);
     }
 
+    public void showRegionPane() {
+        regionPane.setVisible(true);
+    }
+
+    public void hideRegionPane() {
+        regionPane.setVisible(false);
+    }
+
+    public void addToOnCartItemList(OnCartItems newItem) {
+        onCartItemsList.add(newItem);
+        itemNameList.add(newItem.getName());
+        setNumberOfItemOnCartLabel();
+    }
 }

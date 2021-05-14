@@ -1,3 +1,12 @@
+.heading-pane{
+    -fx-background-color:  #F37C16;
+}
+
+.heading-label{
+    -fx-text-fill: white;
+    -fx-font-size: 30;
+}
+
 .item-card{
     -fx-background-color: white;
     -fx-background-radius: 20;
@@ -24,24 +33,34 @@
 
 .button-add{
     -fx-background-color: #27ae60;
-    -fx-background-radius: 0 0 20 0;
+    -fx-background-radius: 0 0 0 0;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 15;
 }
 .button-cancel{
     -fx-background-color: #e74c3c;
-    -fx-background-radius: 0 0 0 20;
+    -fx-background-radius: 0 0 0 0;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 15;
 }
-.button-up-down{
+
+.button-up-down {
     -fx-background-color: #aaaaaa;
 
 }
 
-.label-cart{
+.label-cart {
     -fx-background-color: #ffd321;
     -fx-background-radius: 50 50 50 50;
 }
+
+.onMenuCard {
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-color: white;
+    -fx-padding: 4;
+    -fx-border-color: #e67e22;
+
+}
+

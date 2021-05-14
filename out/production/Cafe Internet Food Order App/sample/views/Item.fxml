@@ -35,7 +35,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox alignment="CENTER" style="-fx-background-color: #FCD757;" styleClass="item-card1">
+            <VBox alignment="CENTER" style="-fx-background-color: #FBB100;" styleClass="item-card1">
                <children>
                   <HBox alignment="BOTTOM_CENTER">
                      <children>

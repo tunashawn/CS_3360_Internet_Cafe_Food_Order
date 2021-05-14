@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="500.0"
+            style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <GridPane layoutX="236.0" layoutY="47.0" maxHeight="700.0" maxWidth="500.0" prefHeight="700.0" prefWidth="500.0"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="599.0" minHeight="10.0" prefHeight="599.0" vgrow="SOMETIMES"/>
+         </rowConstraints>
+         <children>
+            <Pane styleClass="heading-pane" stylesheets="@../css/Style.css">
+               <children>
+                  <HBox alignment="CENTER" layoutX="118.0" layoutY="35.0" prefHeight="40.0" prefWidth="265.0">
+                     <children>
+                        <Label styleClass="heading-label" text="Order #123" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Semibold" size="20.0"/>
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="474.0" layoutY="2.0"
+                          maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false"
+                          prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontAwesomeIcon iconName="TIMES" size="20"/>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;"
+                        GridPane.rowIndex="1">
+               <content>
+                  <AnchorPane maxWidth="500.0" minHeight="0.0" minWidth="500.0" prefWidth="500.0"
+                              style="-fx-background-color: white;">
+                     <children>
+                        <GridPane fx:id="grid" style="-fx-background-color: transparent;">
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

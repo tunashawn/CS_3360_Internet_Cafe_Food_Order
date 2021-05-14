@@ -63,13 +63,17 @@ public class MyOrderControl {
     }
 
     public void showStage() {
+        mainFrameControl.showRegionPane();
         thisStage.initStyle(StageStyle.UNDECORATED);
         thisStage.show();
     }
 
     @FXML
     private void initialize() {
-        closeButton.setOnAction(event -> closeStage());
+        closeButton.setOnAction(event -> {
+            mainFrameControl.hideRegionPane();
+            closeStage();
+        });
 
         makeOrderButton.setOnAction(event -> makeOrder());
 
@@ -134,7 +138,8 @@ public class MyOrderControl {
             // Clear on shopping cart items list
             onCartItemsList.clear();
             itemNameList.clear();
-            // Update shopping car items list
+
+            mainFrameControl.hideRegionPane();
             closeStage();
         }
     }

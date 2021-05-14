@@ -15,32 +15,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
    <children>
       <Pane maxHeight="640.0" maxWidth="700.0" minHeight="640.0" minWidth="700.0" prefHeight="640.0" prefWidth="700.0"
             style="-fx-background-color: white;" stylesheets="@../css/Style.css">
          <children>
-            <Pane prefHeight="114.0" prefWidth="700.0" style="-fx-background-color: #e67e22;">
+            <Pane prefHeight="110.0" prefWidth="700.0" styleClass="heading-pane">
                <children>
-                  <Label layoutX="35.0" layoutY="21.0" text="My Order" textFill="WHITE">
+                  <Label layoutY="33.0" styleClass="heading-label" text="My Order" textFill="WHITE">
                      <font>
                         <Font name="Open Sans Semibold" size="30.0"/>
                      </font>
+                     <padding>
+                        <Insets left="30.0"/>
+                     </padding>
                   </Label>
                   <Label fx:id="totalPriceLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="564.0"
-                         layoutY="62.0" prefHeight="46.0" prefWidth="109.0" text="100,000" textFill="WHITE">
+                         layoutY="60.0" prefHeight="46.0" prefWidth="109.0" text="100,000" textFill="WHITE">
                      <font>
                         <Font size="20.0"/>
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" layoutX="511.0" layoutY="62.0" prefHeight="46.0" prefWidth="53.0"
+                  <Label contentDisplay="CENTER" layoutX="511.0" layoutY="60.0" prefHeight="46.0" prefWidth="53.0"
                          text="Total:" textFill="WHITE">
                      <font>
                         <Font size="20.0"/>
                      </font>
                   </Label>
-                  <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="660.0" layoutY="11.0"
+                  <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="2.0"
                           maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false"
                           prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;">
                      <graphic>

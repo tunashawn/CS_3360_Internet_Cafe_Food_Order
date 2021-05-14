@@ -15,6 +15,8 @@ import java.text.DecimalFormat;
 
 public class OnCartItemControl {
 
+    private final MyOrderControl myOrderControl;
+    private final Stage thisStage;
     @FXML
     private ImageView imgLabel;
     @FXML
@@ -33,8 +35,6 @@ public class OnCartItemControl {
     private JFXButton decreaseQuantityButton;
     @FXML
     private JFXButton deleteButton;
-    private final MyOrderControl myOrderControl;
-    private final Stage thisStage;
     private int quantity;
     private OnCartItems item;
     private int price;

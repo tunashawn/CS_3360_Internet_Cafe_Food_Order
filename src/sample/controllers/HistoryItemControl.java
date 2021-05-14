@@ -31,7 +31,7 @@ public class HistoryItemControl {
 
         // Load the FXML file
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/HistoryItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/views/OrderHistoryItem.fxml"));
 
             // Set this class as the controller
             loader.setController(this);
