@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -22,42 +21,39 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="217.0" minHeight="70.0" prefHeight="207.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES"/>
          </rowConstraints>
          <children>
             <HBox alignment="CENTER" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="img" fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/food_demo.jpg" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" style="-fx-background-color: #FBB100;" styleClass="item-card1">
-                <children>
-                    <HBox alignment="BOTTOM_CENTER">
-                        <children>
-                            <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0"
-                                   text="Monster Energy Zero Sugar" textAlignment="CENTER" wrapText="true">
-                                <font>
-                                    <Font name="Open Sans Semibold" size="15.0"/>
-                                </font>
-                                <HBox.margin>
-                                    <Insets top="8.0"/>
-                                </HBox.margin>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0"
+                               text="Monster Energy Zero Sugar" textAlignment="CENTER" textFill="#1e1e1e"
+                               wrapText="true">
+                           <font>
+                              <Font name="Open Sans Semibold" size="15.0"/>
+                           </font>
+                        </Label>
+                        <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" text="\$3.9"
+                               textFill="#1e1e1e">
+                           <font>
+                              <Font name="Open Sans" size="14.0"/>
+                           </font>
                         </Label>
                      </children>
-                  </HBox>
-                  <Label fx:id="priceLabel" alignment="CENTER" contentDisplay="CENTER" text="\$3.9">
-                     <font>
-                        <Font name="Open Sans" size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="220.0" style="-fx-background-color: white;"
+                  styleClass="item-card1">
+               <children>
+                  <ImageView fx:id="img" fitHeight="175.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/food_demo.jpg"/>
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
          </children>
@@ -67,9 +63,10 @@
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <effect>
-      <DropShadow height="20.0" offsetX="2.0" offsetY="5.0" radius="9.5" width="20.0">
+      <DropShadow height="28.9" offsetX="2.0" offsetY="2.0" radius="14.69" width="31.86">
          <color>
-            <Color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" opacity="0.20434780418872833" />
+            <Color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475"
+                   opacity="0.20434780418872833"/>
          </color>
       </DropShadow>
    </effect>

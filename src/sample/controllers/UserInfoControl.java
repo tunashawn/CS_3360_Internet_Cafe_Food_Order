@@ -81,6 +81,7 @@ public class UserInfoControl {
             succeedLabel.setVisible(true);
             warningLabel.setVisible(false);
         } else {
+            warningLabel.setText("Password must be at least " + Main.passwordLength + " characters!");
             succeedLabel.setVisible(false);
             warningLabel.setVisible(true);
         }

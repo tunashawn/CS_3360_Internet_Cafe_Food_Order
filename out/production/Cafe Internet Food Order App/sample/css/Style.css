@@ -12,8 +12,10 @@
     -fx-background-radius: 20;
 }
 
+
 .item-card1 {
     -fx-background-radius: 20 20 0 0;
+    -fx-background-color: #ffa835;
 }
 
 .scroll-pane {
@@ -61,7 +63,14 @@
     -fx-border-radius: 20 20 20 20;
     -fx-background-color: white;
     -fx-padding: 4;
-    -fx-border-color: #c76513;
+    -fx-border-color: #f68331;
 
+}
+
+.theme-primary-color {
+    -fx-background-color:  #292728;
+}
+.theme-secondary-color{
+    -fx-background-color: #f68331;
 }
 

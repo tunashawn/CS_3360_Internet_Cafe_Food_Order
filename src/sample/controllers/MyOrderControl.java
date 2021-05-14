@@ -116,7 +116,7 @@ public class MyOrderControl {
         for (OnCartItems i : onCartItemsList) {
             totalCost += i.getQuantity() * i.getPrice();
         }
-        if (mainFrameControl.getUserBalance() > totalCost) {
+        if (user.getBalance() > totalCost) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Purchase confirmation");
             alert.setHeaderText(null);
@@ -127,9 +127,13 @@ public class MyOrderControl {
             for (OnCartItems i : onCartItemsList) {
                 quantity += i.getQuantity();
             }
+            int orderNumber = 1;
+            if (mainFrameControl.getOrders().size() > 0) {
+                orderNumber = mainFrameControl.getOrders().size() + 1;
+            }
             if (result.get() == ButtonType.OK) {
                 Orders newOrder = new Orders(
-                        1,
+                        orderNumber,
                         this.user.getUsername(),
                         LocalDateTime.now(),
                         onCartItemsList,

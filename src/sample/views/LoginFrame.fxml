@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="495.0" maxWidth="300.0" minHeight="450.0" minWidth="300.0"
-            prefHeight="495.0" prefWidth="300.0" style="-fx-background-color: #F57C00;"
+            prefHeight="495.0" prefWidth="300.0" styleClass="theme-primary-color" stylesheets="@../css/Style.css"
             xmlns="http://javafx.com/javafx/16">
    <children>
       <TextField fx:id="usernameTF" layoutX="10.0" layoutY="268.0" prefHeight="45.0" prefWidth="280.0"
@@ -36,8 +36,8 @@
          </font>
       </PasswordField>
       <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" layoutY="445.0" mnemonicParsing="false"
-              prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white;" text="Login"
-              textAlignment="CENTER" textFill="#1e1e1e">
+              prefHeight="50.0" prefWidth="300.0" styleClass="theme-secondary-color" text="Login" textAlignment="CENTER"
+              textFill="WHITE">
          <font>
             <Font name="Open Sans Semibold" size="18.0"/>
          </font>
@@ -50,7 +50,7 @@
       </ImageView>
       <Button fx:id="closeButton" layoutX="270.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
          <graphic>
-            <FontAwesomeIcon iconName="TIMES" size="20" />
+            <FontAwesomeIcon fill="WHITE" iconName="TIMES" size="20"/>
          </graphic>
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />

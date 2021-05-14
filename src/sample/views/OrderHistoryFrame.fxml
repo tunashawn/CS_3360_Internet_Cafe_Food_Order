@@ -21,11 +21,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxWidth="850.0" minWidth="850.0" prefHeight="700.0" prefWidth="850.0"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxWidth="850.0" minWidth="850.0" prefHeight="700.0" prefWidth="825.0"
             style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16">
     <children>
         <Pane maxHeight="110.0" maxWidth="850.0" minHeight="110.0" minWidth="850.0" prefHeight="110.0" prefWidth="850.0"
-              styleClass="heading-pane" stylesheets="@../css/Style.css">
+              styleClass="theme-primary-color" stylesheets="@../css/Style.css">
             <children>
                 <Label layoutY="34.0" styleClass="heading-label" text="Order History">
                     <font>
@@ -39,7 +39,7 @@
                         maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false"
                         prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;">
                     <graphic>
-                        <FontAwesomeIcon iconName="TIMES" size="20"/>
+                        <FontAwesomeIcon fill="WHITE" iconName="TIMES" size="20"/>
                     </graphic>
                 </Button>
             </children>
@@ -113,7 +113,6 @@
                 <HBox alignment="CENTER" GridPane.columnIndex="4"/>
             </children>
         </GridPane>
-        <Line endX="620.0" layoutX="165.0" layoutY="118.0" startX="-100.0"/>
         <Line endX="620.0" layoutX="165.0" layoutY="166.0" startX="-100.0"/>
         <Rectangle fx:id="regionPane" height="700.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="850.0">
             <fill>

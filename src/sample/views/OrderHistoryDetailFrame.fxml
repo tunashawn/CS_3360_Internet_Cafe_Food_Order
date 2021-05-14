@@ -28,23 +28,24 @@
                 <RowConstraints maxHeight="599.0" minHeight="10.0" prefHeight="599.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Pane styleClass="heading-pane" stylesheets="@../css/Style.css">
+                <Pane styleClass="theme-primary-color" stylesheets="@../css/Style.css">
                     <children>
-                  <HBox alignment="CENTER" layoutX="118.0" layoutY="35.0" prefHeight="40.0" prefWidth="265.0">
-                     <children>
-                         <Label fx:id="orderNumberLabel" styleClass="heading-label" text="Order #123" textFill="WHITE">
-                             <font>
-                                 <Font name="Open Sans Semibold" size="20.0"/>
-                             </font>
-                         </Label>
-                     </children>
-                  </HBox>
+                        <HBox alignment="CENTER" layoutX="118.0" layoutY="35.0" prefHeight="40.0" prefWidth="265.0">
+                            <children>
+                                <Label fx:id="orderNumberLabel" styleClass="heading-label" text="Order #123"
+                                       textFill="WHITE">
+                                    <font>
+                                        <Font name="Open Sans Semibold" size="20.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
                         <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="474.0"
                                 layoutY="2.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0"
                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0"
                                 style="-fx-background-color: transparent;">
                             <graphic>
-                                <FontAwesomeIcon iconName="TIMES" size="20"/>
+                                <FontAwesomeIcon fill="WHITE" iconName="TIMES" size="20"/>
                             </graphic>
                         </Button>
                     </children>

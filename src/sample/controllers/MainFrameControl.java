@@ -299,6 +299,10 @@ public class MainFrameControl implements Initializable {
         ordersList.add(newOrder);
     }
 
+    public List<Orders> getOrders() {
+        return ordersList;
+    }
+
     public void showRegionPane() {
         regionPane.setVisible(true);
     }
@@ -311,10 +315,6 @@ public class MainFrameControl implements Initializable {
         onCartItemsList.add(newItem);
         itemNameList.add(newItem.getName());
         setNumberOfItemOnCartLabel();
-    }
-
-    public int getUserBalance() {
-        return user.getBalance();
     }
 
     public void updateBalance(int amount) {
