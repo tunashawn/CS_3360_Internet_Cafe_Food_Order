@@ -21,8 +21,6 @@
 
 <Pane prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
-                  strokeWidth="0.0" width="1350.0"/>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="250.0" prefWidth="250.0" />
@@ -347,5 +345,7 @@
             </VBox>
          </children>
       </GridPane>
+       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
+                  strokeWidth="0.0" width="1350.0"/>
    </children>
 </Pane>
