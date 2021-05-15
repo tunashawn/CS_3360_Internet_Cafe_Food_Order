@@ -13,61 +13,52 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="495.0" maxWidth="300.0" minHeight="450.0" minWidth="300.0"
-            prefHeight="495.0" prefWidth="300.0" style="-fx-background-color: #F57C00;"
-            xmlns="http://javafx.com/javafx/16">
+<AnchorPane maxHeight="495.0" maxWidth="300.0" minHeight="450.0" minWidth="300.0" prefHeight="495.0" prefWidth="300.0" styleClass="theme-primary-color" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="usernameTF" layoutX="10.0" layoutY="268.0" prefHeight="45.0" prefWidth="280.0"
-                 promptText="Enter username" style="-fx-background-color: white;">
+      <TextField fx:id="usernameTF" layoutX="10.0" layoutY="268.0" prefHeight="45.0" prefWidth="280.0" promptText="Enter username" style="-fx-background-color: white;">
          <font>
-            <Font name="Open Sans" size="15.0"/>
+            <Font name="Open Sans" size="15.0" />
          </font>
          <opaqueInsets>
-            <Insets/>
+            <Insets />
          </opaqueInsets>
       </TextField>
-      <PasswordField fx:id="passwordPF" layoutX="10.0" layoutY="334.0" prefHeight="45.0" prefWidth="280.0"
-                     promptText="Enter password" style="-fx-background-color: white;">
+      <PasswordField fx:id="passwordPF" layoutX="10.0" layoutY="334.0" prefHeight="45.0" prefWidth="280.0" promptText="Enter password" style="-fx-background-color: white;">
          <opaqueInsets>
-            <Insets/>
+            <Insets />
          </opaqueInsets>
          <font>
-            <Font name="Open Sans" size="15.0"/>
+            <Font name="Open Sans" size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" layoutY="445.0" mnemonicParsing="false"
-              prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white;" text="Login"
-              textAlignment="CENTER" textFill="#1e1e1e">
+      <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" layoutY="445.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" styleClass="theme-secondary-color" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Open Sans Semibold" size="18.0"/>
+            <Font name="Open Sans Semibold" size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="75.0" layoutY="98.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="75.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/burger.png"/>
+            <Image url="@../img/burger.png" />
          </image>
       </ImageView>
       <Button fx:id="closeButton" layoutX="270.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
          <graphic>
-            <FontAwesomeIcon iconName="TIMES" size="20" />
+            <FontAwesomeIcon fill="WHITE" iconName="TIMES" size="20" />
          </graphic>
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="24.0" prefHeight="58.0"
-             prefWidth="156.0" text="Internet Cafe Food Order App" textAlignment="CENTER" textFill="WHITE"
-             wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="24.0" prefHeight="58.0" prefWidth="156.0" text="Internet Cafe Food Order App" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Open Sans Semibold" size="20.0"/>
+            <Font name="Open Sans Semibold" size="20.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" layoutX="38.0" layoutY="398.0" prefHeight="17.0" prefWidth="226.0">
          <children>
             <Label fx:id="warningLabel" text="Wrong username or password!" textFill="WHITE">
                <font>
-                  <Font name="Open Sans" size="13.0"/>
+                  <Font name="Open Sans" size="13.0" />
                </font>
             </Label>
          </children>

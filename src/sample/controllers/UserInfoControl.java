@@ -70,7 +70,7 @@ public class UserInfoControl {
         usernameLabel.setText(user.getUsername());
         phoneNumberLabel.setText(user.getPhoneNumber());
         emailLabel.setText(user.getEmail());
-        balanceLabel.setText(String.valueOf(user.getBalance()));
+        balanceLabel.setText(Main.formatMoney(user.getBalance()));
     }
 
     public void changePassword() {

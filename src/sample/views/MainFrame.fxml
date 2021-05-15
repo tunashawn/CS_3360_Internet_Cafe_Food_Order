@@ -21,6 +21,8 @@
 
 <Pane prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
+                  strokeWidth="0.0" width="1350.0"/>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="250.0" prefWidth="250.0" />
@@ -231,8 +233,7 @@
                          </Label>
                              <JFXButton fx:id="coffeeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
-                                        prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
-                                        text="Coffee">
+                                        prefHeight="60.0" prefWidth="250.0" text="Coffee" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -244,11 +245,13 @@
                                  <padding>
                                      <Insets left="45.0"/>
                                  </padding>
-                        </JFXButton>
+                                 <font>
+                                     <Font size="20.0"/>
+                                 </font>
+                             </JFXButton>
                              <JFXButton fx:id="energyDrinkButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
-                                        prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
-                                        text="Energy Drink">
+                                        prefHeight="60.0" prefWidth="250.0" text="Energy Drink" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -260,14 +263,16 @@
                                  <opaqueInsets>
                                      <Insets/>
                                  </opaqueInsets>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
-                        </JFXButton>
+                                 <padding>
+                                     <Insets left="45.0"/>
+                                 </padding>
+                                 <font>
+                                     <Font size="20.0"/>
+                                 </font>
+                             </JFXButton>
                              <JFXButton fx:id="beverageButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
-                                        prefHeight="60.0" prefWidth="250.0" stylesheets="@../css/LeftButton.css"
-                                        text="Beverage">
+                                        prefHeight="60.0" prefWidth="250.0" text="Beverage" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -279,10 +284,13 @@
                                  <opaqueInsets>
                                      <Insets/>
                                  </opaqueInsets>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
-                        </JFXButton>
+                                 <padding>
+                                     <Insets left="45.0"/>
+                                 </padding>
+                                 <font>
+                                     <Font size="20.0"/>
+                                 </font>
+                             </JFXButton>
                         <Label prefHeight="40.0" prefWidth="250.0" text="FOOD" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
@@ -296,7 +304,7 @@
                         </Label>
                              <JFXButton fx:id="banhmiButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0"
-                                        prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Banh Mi">
+                                        prefWidth="250.0" text="Banh Mi" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -308,10 +316,13 @@
                                  <padding>
                                      <Insets left="45.0"/>
                                  </padding>
-                        </JFXButton>
+                                 <font>
+                                     <Font size="20.0"/>
+                                 </font>
+                             </JFXButton>
                              <JFXButton fx:id="snackButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0"
-                                        prefWidth="250.0" stylesheets="@../css/LeftButton.css" text="Snack">
+                                        prefWidth="250.0" text="Snack" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -326,6 +337,9 @@
                                  <VBox.margin>
                                      <Insets bottom="50.0"/>
                                  </VBox.margin>
+                                 <font>
+                                     <Font size="20.0"/>
+                                 </font>
                              </JFXButton>
                        </children>
                    </VBox>
@@ -333,7 +347,5 @@
             </VBox>
          </children>
       </GridPane>
-       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
-                  strokeWidth="0.0" width="1350.0"/>
    </children>
 </Pane>
