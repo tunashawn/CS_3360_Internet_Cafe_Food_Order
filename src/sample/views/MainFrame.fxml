@@ -21,6 +21,8 @@
 
 <Pane prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
+                  strokeWidth="0.0" width="1350.0"/>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1350.0" style="-fx-background-color: white;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="250.0" prefWidth="250.0" />
@@ -249,7 +251,7 @@
                              </JFXButton>
                              <JFXButton fx:id="energyDrinkButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
-                                        prefHeight="60.0" prefWidth="250.0" text="Energy Drink" textFill="WHITE">
+                                        prefHeight="60.0" prefWidth="250.0" text="Energy Drinks" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -270,7 +272,7 @@
                              </JFXButton>
                              <JFXButton fx:id="beverageButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         maxWidth="250.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT"
-                                        prefHeight="60.0" prefWidth="250.0" text="Beverage" textFill="WHITE">
+                                        prefHeight="60.0" prefWidth="250.0" text="Beverages" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -320,7 +322,7 @@
                              </JFXButton>
                              <JFXButton fx:id="snackButton" alignment="BASELINE_LEFT" graphicTextGap="10.0"
                                         minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0"
-                                        prefWidth="250.0" text="Snack" textFill="WHITE">
+                                        prefWidth="250.0" text="Snacks" textFill="WHITE">
                                  <graphic>
                                      <ImageView fitHeight="32.0" fitWidth="32.0" nodeOrientation="INHERIT"
                                                 pickOnBounds="true" preserveRatio="true">
@@ -345,7 +347,5 @@
             </VBox>
          </children>
       </GridPane>
-       <Rectangle fx:id="regionPane" fill="#000000c4" height="800.0" stroke="BLACK" strokeType="INSIDE"
-                  strokeWidth="0.0" width="1350.0"/>
    </children>
 </Pane>
